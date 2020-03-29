@@ -1,0 +1,1466 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation for Colyseus Multiplayer Game Server for Node.js">
+      
+      
+        <link rel="canonical" href="https://colyseus.io/server/api/">
+      
+      
+        <meta name="author" content="Endel Dreyer">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+    
+    
+      
+        <title>Server - Colyseus 0.12.x</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.8c900955.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/code-tabs.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ads.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#web-socket" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://colyseus.io/" title="Colyseus 0.12.x" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/logo-white.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Colyseus 0.12.x
+              </span>
+              <span class="md-header-nav__topic">
+                Server
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/colyseus/colyseus/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      colyseus/colyseus
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://colyseus.io/" title="Colyseus 0.12.x" class="md-nav__button md-logo">
+      
+        <img src="../../images/logo-white.png" width="48" height="48">
+      
+    </a>
+    Colyseus 0.12.x
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/colyseus/colyseus/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      colyseus/colyseus
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      入门
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        入门
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/server/" title="服务器段" class="md-nav__link">
+      服务器段
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/javascript-client/" title="JavaScript 客户端" class="md-nav__link">
+      JavaScript 客户端
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/unity3d-client/" title="Unity3d 客户端" class="md-nav__link">
+      Unity3d 客户端
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      如何使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        如何使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/password-protect-room/" title="用密码保护房间" class="md-nav__link">
+      用密码保护房间
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/deny-player-join-a-room/" title="拒绝玩家加入房间" class="md-nav__link">
+      拒绝玩家加入房间
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/rate-limit/" title="限速" class="md-nav__link">
+      限速
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      服务器 API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        服务器 API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Server
+      </label>
+    
+    <a href="./" title="Server" class="md-nav__link md-nav__link--active">
+      Server
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#server" title="Server" class="md-nav__link">
+    Server
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor-options" title="constructor (options)" class="md-nav__link">
+    constructor (options)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optionsserver" title="options.server" class="md-nav__link">
+    options.server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionspinginterval" title="options.pingInterval" class="md-nav__link">
+    options.pingInterval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionspingmaxretries" title="options.pingMaxRetries" class="md-nav__link">
+    options.pingMaxRetries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionsverifyclient" title="options.verifyClient" class="md-nav__link">
+    options.verifyClient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionspresence" title="options.presence" class="md-nav__link">
+    options.presence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionsgracefullyshutdown" title="options.gracefullyShutdown" class="md-nav__link">
+    options.gracefullyShutdown
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-name-string-handler-room-options-any" title="define (name: string, handler: Room, options?: any)" class="md-nav__link">
+    define (name: string, handler: Room, options?: any)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matchmaking-filters-filterbyoptions" title="Matchmaking filters: filterBy(options)" class="md-nav__link">
+    Matchmaking filters: filterBy(options)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matchmaking-priority-sortbyoptions" title="Matchmaking priority: sortBy(options)" class="md-nav__link">
+    Matchmaking priority: sortBy(options)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-to-room-instance-events" title="Listening to room instance events" class="md-nav__link">
+    Listening to room instance events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attach-options-any" title="attach (options: any)" class="md-nav__link">
+    attach (options: any)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listen-port-number" title="listen (port: number)" class="md-nav__link">
+    listen (port: number)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onshutdown-callback-function" title="onShutdown (callback: Function)" class="md-nav__link">
+    onShutdown (callback: Function)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gracefullyshutdown-exit-boolean" title="gracefullyShutdown (exit: boolean)" class="md-nav__link">
+    gracefullyShutdown (exit: boolean)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../room/" title="Room" class="md-nav__link">
+      Room
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../client/" title="Client" class="md-nav__link">
+      Client
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../timing-events/" title="Timing events" class="md-nav__link">
+      Timing events
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../matchmaker/" title="Match-maker API" class="md-nav__link">
+      Match-maker API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../authentication/" title="Authentication API" class="md-nav__link">
+      Authentication API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../presence/" title="Presence" class="md-nav__link">
+      Presence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../graceful-shutdown/" title="Graceful shutdown" class="md-nav__link">
+      Graceful shutdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../state-serialization/" title="Custom State Serialization" class="md-nav__link">
+      Custom State Serialization
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      客户端 API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        客户端 API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client/client/" title="Client" class="md-nav__link">
+      Client
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client/room/" title="Room" class="md-nav__link">
+      Room
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      状态处理
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        状态处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../state/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../state/schema/" title="Schema" class="md-nav__link">
+      Schema
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../state/fossil-delta/" title="Fossil Delta (deprecated)" class="md-nav__link">
+      Fossil Delta (deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../authentication/" title="Authentication" class="md-nav__link">
+      Authentication
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../push/" title="Push Notifications" class="md-nav__link">
+      Push Notifications
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../debugging/" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deployment/" title="Deployment" class="md-nav__link">
+      Deployment
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../scalability/" title="Scalability" class="md-nav__link">
+      Scalability
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Migrating
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Migrating
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.12/" title="0.12.x" class="md-nav__link">
+      0.12.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.11/" title="0.11.x" class="md-nav__link">
+      0.11.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.10/" title="0.10.x" class="md-nav__link">
+      0.10.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.9/" title="0.9.x" class="md-nav__link">
+      0.9.x
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#server" title="Server" class="md-nav__link">
+    Server
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor-options" title="constructor (options)" class="md-nav__link">
+    constructor (options)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optionsserver" title="options.server" class="md-nav__link">
+    options.server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionspinginterval" title="options.pingInterval" class="md-nav__link">
+    options.pingInterval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionspingmaxretries" title="options.pingMaxRetries" class="md-nav__link">
+    options.pingMaxRetries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionsverifyclient" title="options.verifyClient" class="md-nav__link">
+    options.verifyClient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionspresence" title="options.presence" class="md-nav__link">
+    options.presence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionsgracefullyshutdown" title="options.gracefullyShutdown" class="md-nav__link">
+    options.gracefullyShutdown
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-name-string-handler-room-options-any" title="define (name: string, handler: Room, options?: any)" class="md-nav__link">
+    define (name: string, handler: Room, options?: any)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matchmaking-filters-filterbyoptions" title="Matchmaking filters: filterBy(options)" class="md-nav__link">
+    Matchmaking filters: filterBy(options)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matchmaking-priority-sortbyoptions" title="Matchmaking priority: sortBy(options)" class="md-nav__link">
+    Matchmaking priority: sortBy(options)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-to-room-instance-events" title="Listening to room instance events" class="md-nav__link">
+    Listening to room instance events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attach-options-any" title="attach (options: any)" class="md-nav__link">
+    attach (options: any)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listen-port-number" title="listen (port: number)" class="md-nav__link">
+    listen (port: number)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onshutdown-callback-function" title="onShutdown (callback: Function)" class="md-nav__link">
+    onShutdown (callback: Function)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gracefullyshutdown-exit-boolean" title="gracefullyShutdown (exit: boolean)" class="md-nav__link">
+    gracefullyShutdown (exit: boolean)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/colyseus/docs/edit/master/docs/server/api.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="web-socket">Web-Socket 服务器<a class="headerlink" href="#web-socket" title="Permanent link">&para;</a></h1>
+<h2 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h2>
+<p>The <a href="#server"><code>Server</code></a> is responsible for providing the WebSocket server to enable communication between server and client.</p>
+<p>该<a href="#server"><code>Server</code></a>负责提供WebSocket的服务器，使服务器和客户机之间的通信。</p>
+<h3 id="constructor-options"><code>constructor (options)</code><a class="headerlink" href="#constructor-options" title="Permanent link">&para;</a></h3>
+<h4 id="optionsserver"><code>options.server</code><a class="headerlink" href="#optionsserver" title="Permanent link">&para;</a></h4>
+<p>The HTTP server to bind the WebSocket Server into. You may use <a href="https://www.npmjs.com/package/express"><code>express</code></a> for your server too.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-0-0_typescript-panel role=tab><label for=tab-group-0-0_typescript class=code-tab-label data-lang=typescript id=tab-group-0-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-0-0_typescript-panel aria-labelledby=tab-group-0-0_typescript-label><div class=codehilite><pre><span></span><code><span class=c1>// Colyseus + Express</span>
+<span class=kr>import</span> <span class=p>{</span> <span class=nx>Server</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=p>{</span> <span class=nx>createServer</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;http&quot;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=nx>express</span> <span class=nx>from</span> <span class=s2>&quot;express&quot;</span><span class=p>;</span>
+<span class=kr>const</span> <span class=nx>port</span> <span class=o>=</span> <span class=nb>Number</span><span class=p>(</span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>port</span><span class=p>)</span> <span class=o>||</span> <span class=mi>3000</span><span class=p>;</span>
+
+<span class=kr>const</span> <span class=nx>app</span> <span class=o>=</span> <span class=nx>express</span><span class=p>();</span>
+<span class=nx>app</span><span class=p>.</span><span class=nx>use</span><span class=p>(</span><span class=nx>express</span><span class=p>.</span><span class=nx>json</span><span class=p>());</span>
+
+<span class=kr>const</span> <span class=nx>gameServer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Server</span><span class=p>({</span>
+  <span class=nx>server</span>: <span class=kt>createServer</span><span class=p>(</span><span class=nx>app</span><span class=p>)</span>
+<span class=p>});</span>
+
+<span class=nx>gameServer</span><span class=p>.</span><span class=nx>listen</span><span class=p>(</span><span class=nx>port</span><span class=p>);</span>
+</code></pre></div></div><input name=tab-group-0 type=radio id=tab-group-0-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-0-1_typescript-panel role=tab><label for=tab-group-0-1_typescript class=code-tab-label data-lang=typescript id=tab-group-0-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-0-1_typescript-panel aria-labelledby=tab-group-0-1_typescript-label><div class=codehilite><pre><span></span><code><span class=c1>// Colyseus + Express</span>
+<span class=kr>const</span> <span class=nx>colyseus</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&quot;colyseus&quot;</span><span class=p>);</span>
+<span class=kr>const</span> <span class=nx>http</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&quot;http&quot;</span><span class=p>);</span>
+<span class=kr>const</span> <span class=nx>express</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&quot;express&quot;</span><span class=p>);</span>
+<span class=kr>const</span> <span class=nx>port</span> <span class=o>=</span> <span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>port</span> <span class=o>||</span> <span class=mi>3000</span><span class=p>;</span>
+
+<span class=kr>const</span> <span class=nx>app</span> <span class=o>=</span> <span class=nx>express</span><span class=p>();</span>
+<span class=nx>app</span><span class=p>.</span><span class=nx>use</span><span class=p>(</span><span class=nx>express</span><span class=p>.</span><span class=nx>json</span><span class=p>());</span>
+
+<span class=kr>const</span> <span class=nx>gameServer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>colyseus</span><span class=p>.</span><span class=nx>Server</span><span class=p>({</span>
+  <span class=nx>server</span>: <span class=kt>http.createServer</span><span class=p>(</span><span class=nx>app</span><span class=p>)</span>
+<span class=p>});</span>
+
+<span class=nx>gameServer</span><span class=p>.</span><span class=nx>listen</span><span class=p>(</span><span class=nx>port</span><span class=p>);</span>
+</code></pre></div></div><input name=tab-group-0 type=radio id=tab-group-0-2_typescript class=code-tab data-lang=typescript aria-controls=tab-group-0-2_typescript-panel role=tab><label for=tab-group-0-2_typescript class=code-tab-label data-lang=typescript id=tab-group-0-2_typescript-label>TypeScript (barebones)</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-0-2_typescript-panel aria-labelledby=tab-group-0-2_typescript-label><div class=codehilite><pre><span></span><code><span class=c1>// Colyseus (barebones)</span>
+<span class=kr>import</span> <span class=p>{</span> <span class=nx>Server</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+<span class=kr>const</span> <span class=nx>port</span> <span class=o>=</span> <span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>port</span> <span class=o>||</span> <span class=mi>3000</span><span class=p>;</span>
+
+<span class=kr>const</span> <span class=nx>gameServer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Server</span><span class=p>();</span>
+<span class=nx>gameServer</span><span class=p>.</span><span class=nx>listen</span><span class=p>(</span><span class=nx>port</span><span class=p>);</span>
+</code></pre></div></div><input name=tab-group-0 type=radio id=tab-group-0-3_typescript class=code-tab data-lang=typescript aria-controls=tab-group-0-3_typescript-panel role=tab><label for=tab-group-0-3_typescript class=code-tab-label data-lang=typescript id=tab-group-0-3_typescript-label>JavaScript (barebones)</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-0-3_typescript-panel aria-labelledby=tab-group-0-3_typescript-label><div class=codehilite><pre><span></span><code><span class=c1>// Colyseus (barebones)</span>
+<span class=kr>const</span> <span class=nx>colyseus</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&quot;colyseus&quot;</span><span class=p>);</span>
+<span class=kr>const</span> <span class=nx>port</span> <span class=o>=</span> <span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>port</span> <span class=o>||</span> <span class=mi>3000</span><span class=p>;</span>
+
+<span class=kr>const</span> <span class=nx>gameServer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>colyseus</span><span class=p>.</span><span class=nx>Server</span><span class=p>();</span>
+<span class=nx>gameServer</span><span class=p>.</span><span class=nx>listen</span><span class=p>(</span><span class=nx>port</span><span class=p>);</span>
+</code></pre></div></div></div>
+
+<h4 id="optionspinginterval"><code>options.pingInterval</code><a class="headerlink" href="#optionspinginterval" title="Permanent link">&para;</a></h4>
+<p>Number of milliseconds for the server to "ping" the clients. Default: <code>1500</code></p>
+<p>The clients are going to be forcibly disconnected if they can't respond after <a href="/server/api/#optionspingMaxRetries">pingMaxRetries</a> retries.</p>
+<h4 id="optionspingmaxretries"><code>options.pingMaxRetries</code><a class="headerlink" href="#optionspingmaxretries" title="Permanent link">&para;</a></h4>
+<p>Maximum allowed number of pings without a response. Default: <code>2</code>.</p>
+<h4 id="optionsverifyclient"><code>options.verifyClient</code><a class="headerlink" href="#optionsverifyclient" title="Permanent link">&para;</a></h4>
+<p>This method happens before WebSocket handshake. If <code>verifyClient</code> is not set
+then the handshake is automatically accepted.</p>
+<ul>
+<li>
+<p><code>info</code> (Object)</p>
+<ul>
+<li><code>origin</code> (String) The value in the Origin header indicated by the client.</li>
+<li><code>req</code> (http.IncomingMessage) The client HTTP GET request.</li>
+<li><code>secure</code> (Boolean) <code>true</code> if <code>req.connection.authorized</code> or <code>req.connection.encrypted</code> is set.</li>
+</ul>
+</li>
+<li>
+<p><code>next</code> (Function) A callback that must be called by the user upon inspection of the <code>info</code> fields. Arguments in this callback are:</p>
+<ul>
+<li><code>result</code> (Boolean) Whether or not to accept the handshake.</li>
+<li><code>code</code> (Number) When <code>result</code> is <code>false</code> this field determines the HTTP error status code to be sent to the client.</li>
+<li><code>name</code> (String) When <code>result</code> is <code>false</code> this field determines the HTTP reason phrase.</li>
+</ul>
+</li>
+</ul>
+<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-1-0_typescript-panel role=tab><label for=tab-group-1-0_typescript class=code-tab-label data-lang=typescript id=tab-group-1-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-1-0_typescript-panel aria-labelledby=tab-group-1-0_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=p>{</span> <span class=nx>Server</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+
+<span class=kr>const</span> <span class=nx>gameServer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Server</span><span class=p>({</span>
+  <span class=c1>// ...</span>
+
+  <span class=nx>verifyClient</span>: <span class=kt>function</span> <span class=p>(</span><span class=nx>info</span><span class=p>,</span> <span class=nx>next</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// validate &#39;info&#39;</span>
+    <span class=c1>//</span>
+    <span class=c1>// - next(false) will reject the websocket handshake</span>
+    <span class=c1>// - next(true) will accept the websocket handshake</span>
+  <span class=p>}</span>
+<span class=p>});</span>
+</code></pre></div></div><input name=tab-group-1 type=radio id=tab-group-1-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-1-1_typescript-panel role=tab><label for=tab-group-1-1_typescript class=code-tab-label data-lang=typescript id=tab-group-1-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-1-1_typescript-panel aria-labelledby=tab-group-1-1_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>const</span> <span class=nx>colyseus</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&quot;colyseus&quot;</span><span class=p>);</span>
+
+<span class=kr>const</span> <span class=nx>gameServer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>colyseus</span><span class=p>.</span><span class=nx>Server</span><span class=p>({</span>
+  <span class=c1>// ...</span>
+
+  <span class=nx>verifyClient</span>: <span class=kt>function</span> <span class=p>(</span><span class=nx>info</span><span class=p>,</span> <span class=nx>next</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// validate &#39;info&#39;</span>
+    <span class=c1>//</span>
+    <span class=c1>// - next(false) will reject the websocket handshake</span>
+    <span class=c1>// - next(true) will accept the websocket handshake</span>
+  <span class=p>}</span>
+<span class=p>});</span>
+</code></pre></div></div></div>
+
+<h4 id="optionspresence"><code>options.presence</code><a class="headerlink" href="#optionspresence" title="Permanent link">&para;</a></h4>
+<p>When scaling Colyseus through multiple processes / machines, you need to provide a presence server. Read more about <a href="/scalability/">scalability</a>, and the <a href="/server/presence/#api"><code>Presence API</code></a>.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-2-0_typescript-panel role=tab><label for=tab-group-2-0_typescript class=code-tab-label data-lang=typescript id=tab-group-2-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-2-0_typescript-panel aria-labelledby=tab-group-2-0_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=p>{</span> <span class=nx>Server</span><span class=p>,</span> <span class=nx>RedisPresence</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+
+<span class=kr>const</span> <span class=nx>gameServer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Server</span><span class=p>({</span>
+  <span class=c1>// ...</span>
+  <span class=nx>presence</span>: <span class=kt>new</span> <span class=nx>RedisPresence</span><span class=p>()</span>
+<span class=p>});</span>
+</code></pre></div></div><input name=tab-group-2 type=radio id=tab-group-2-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-2-1_typescript-panel role=tab><label for=tab-group-2-1_typescript class=code-tab-label data-lang=typescript id=tab-group-2-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-2-1_typescript-panel aria-labelledby=tab-group-2-1_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>const</span> <span class=nx>colyseus</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&quot;colyseus&quot;</span><span class=p>);</span>
+
+<span class=kr>const</span> <span class=nx>gameServer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>colyseus</span><span class=p>.</span><span class=nx>Server</span><span class=p>({</span>
+  <span class=c1>// ...</span>
+  <span class=nx>presence</span>: <span class=kt>new</span> <span class=nx>colyseus</span><span class=p>.</span><span class=nx>RedisPresence</span><span class=p>()</span>
+<span class=p>});</span>
+</code></pre></div></div></div>
+
+<p>The currently available Presence servers are currently:</p>
+<ul>
+<li><code>RedisPresence</code> (scales on a single server and multiple servers)</li>
+</ul>
+<h4 id="optionsgracefullyshutdown"><code>options.gracefullyShutdown</code><a class="headerlink" href="#optionsgracefullyshutdown" title="Permanent link">&para;</a></h4>
+<p>Register shutdown routine automatically. Default is <code>true</code>. If disabled, you
+should call <a href="#gracefullyshutdown-exit-boolean"><code>gracefullyShutdown()</code></a> method
+manually in your shutdown process.</p>
+<h3 id="define-name-string-handler-room-options-any"><code>define (name: string, handler: Room, options?: any)</code><a class="headerlink" href="#define-name-string-handler-room-options-any" title="Permanent link">&para;</a></h3>
+<p>Define a new room handler.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name: string</code> - The public name of the room. You'll use this name when joining the room from the client-side.</li>
+<li><code>handler: Room</code> - Reference to the <code>Room</code> handler class.</li>
+<li><code>options?: any</code> - Custom options for room initialization.</li>
+</ul>
+<p> <div class=codehilite><pre><span></span><code><span class=c1>// Define &quot;chat&quot; room</span>
+<span class=nx>gameServer</span><span class=p>.</span><span class=nx>define</span><span class=p>(</span><span class=s2>&quot;chat&quot;</span><span class=p>,</span> <span class=nx>ChatRoom</span><span class=p>);</span>
+
+<span class=c1>// Define &quot;battle&quot; room</span>
+<span class=nx>gameServer</span><span class=p>.</span><span class=nx>define</span><span class=p>(</span><span class=s2>&quot;battle&quot;</span><span class=p>,</span> <span class=nx>BattleRoom</span><span class=p>);</span>
+
+<span class=c1>// Define &quot;battle&quot; room with custom options</span>
+<span class=nx>gameServer</span><span class=p>.</span><span class=nx>define</span><span class=p>(</span><span class=s2>&quot;battle_woods&quot;</span><span class=p>,</span> <span class=nx>BattleRoom</span><span class=p>,</span> <span class=p>{</span> <span class=nx>map</span><span class=o>:</span> <span class=s2>&quot;woods&quot;</span> <span class=p>});</span>
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Defining the same room handler multiple times</p>
+<p>You may define the same room handler multiple times with different <code>options</code>. When <a href="/server/room/#oncreate-options">Room#onCreate()</a> is called, the <code>options</code> will contain the merged values you specified on <a href="/server/api/#define-name-string-handler-room-options-any">Server#define()</a> + the options provided when the room is created.</p>
+</div>
+<hr />
+<h4 id="matchmaking-filters-filterbyoptions">Matchmaking filters: <code>filterBy(options)</code><a class="headerlink" href="#matchmaking-filters-filterbyoptions" title="Permanent link">&para;</a></h4>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>options: string[]</code> - a list of option names</li>
+</ul>
+<p>Whenever a room is created by the <code>create()</code> or <code>joinOrCreate()</code> methods, only the <code>options</code> defined by the <code>filterBy()</code> method are going to be stored internally, and used to filter out rooms in further <code>join()</code> or <code>joinOrCreate()</code> calls.</p>
+<p><strong>Example:</strong> allowing different "game modes".</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>gameServer</span><span class=p>.</span><span class=nx>define</span><span class=p>(</span><span class=s2>&quot;battle&quot;</span><span class=p>,</span> <span class=nx>BattleRoom</span><span class=p>)</span>
+  <span class=p>.</span><span class=nx>filterBy</span><span class=p>([</span><span class=s1>&#39;mode&#39;</span><span class=p>]);</span>
+</code></pre></div></p>
+<p>Whenever the room is created, the <code>mode</code> option is going to be stored internally.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>client</span><span class=p>.</span><span class=nx>joinOrCreate</span><span class=p>(</span><span class=s2>&quot;battle&quot;</span><span class=p>,</span> <span class=p>{</span> <span class=nx>mode</span><span class=o>:</span> <span class=s2>&quot;duo&quot;</span> <span class=p>}).</span><span class=nx>then</span><span class=p>(</span><span class=nx>room</span> <span class=o>=&gt;</span> <span class=p>{</span><span class=cm>/* ... */</span><span class=p>});</span>
+</code></pre></div></p>
+<p>You can handle the provided option in the <code>onCreate()</code> and/or <code>onJoin()</code> to implement the requested feature inside your room implementation.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=kr>class</span> <span class=nx>BattleRoom</span> <span class=kr>extends</span> <span class=nx>Room</span> <span class=p>{</span>
+  <span class=nx>onCreate</span><span class=p>(</span><span class=nx>options</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>options</span><span class=p>.</span><span class=nx>mode</span> <span class=o>===</span> <span class=s2>&quot;duo&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=c1>// do something!</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+  <span class=nx>onJoin</span><span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>options</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>options</span><span class=p>.</span><span class=nx>mode</span> <span class=o>===</span> <span class=s2>&quot;duo&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=c1>// put this player into a team!</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></p>
+<p><strong>Example:</strong> filtering by built-in <code>maxClients</code></p>
+<p>The <code>maxClients</code> is an internal variable stored for matchmaking, and can be used for filtering too.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>gameServer</span><span class=p>.</span><span class=nx>define</span><span class=p>(</span><span class=s2>&quot;battle&quot;</span><span class=p>,</span> <span class=nx>BattleRoom</span><span class=p>)</span>
+  <span class=p>.</span><span class=nx>filterBy</span><span class=p>([</span><span class=s1>&#39;maxClients&#39;</span><span class=p>]);</span>
+</code></pre></div></p>
+<p>The client can then ask to join a room capable of handling a certain number of players.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>client</span><span class=p>.</span><span class=nx>joinOrCreate</span><span class=p>(</span><span class=s2>&quot;battle&quot;</span><span class=p>,</span> <span class=p>{</span> <span class=nx>maxClients</span>: <span class=kt>10</span> <span class=p>}).</span><span class=nx>then</span><span class=p>(</span><span class=nx>room</span> <span class=o>=&gt;</span> <span class=p>{</span><span class=cm>/* ... */</span><span class=p>});</span>
+<span class=nx>client</span><span class=p>.</span><span class=nx>joinOrCreate</span><span class=p>(</span><span class=s2>&quot;battle&quot;</span><span class=p>,</span> <span class=p>{</span> <span class=nx>maxClients</span>: <span class=kt>20</span> <span class=p>}).</span><span class=nx>then</span><span class=p>(</span><span class=nx>room</span> <span class=o>=&gt;</span> <span class=p>{</span><span class=cm>/* ... */</span><span class=p>});</span>
+</code></pre></div></p>
+<hr />
+<h4 id="matchmaking-priority-sortbyoptions">Matchmaking priority: <code>sortBy(options)</code><a class="headerlink" href="#matchmaking-priority-sortbyoptions" title="Permanent link">&para;</a></h4>
+<p>You can also give a different priority for joining rooms depending on their information upon creation.</p>
+<p>The <code>options</code> parameter is a key-value object containing the field name in the left, and the sorting direction in the right. Sorting direction can be one of these values: <code>-1</code>, <code>"desc"</code>, <code>"descending"</code>, <code>1</code>, <code>"asc"</code> or <code>"ascending"</code>.</p>
+<p><strong>Example:</strong> sorting by the built-in <code>clients</code></p>
+<p>The <code>clients</code> is an internal variable stored for matchmaking, which contains the current number of connected clients. On the example below, the rooms with the highest amount of clients connected will have priority. Use <code>-1</code>, <code>"desc"</code> or <code>"descending"</code> for descending order:</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>gameServer</span><span class=p>.</span><span class=nx>define</span><span class=p>(</span><span class=s2>&quot;battle&quot;</span><span class=p>,</span> <span class=nx>BattleRoom</span><span class=p>)</span>
+  <span class=p>.</span><span class=nx>sortBy</span><span class=p>({</span> <span class=nx>clients</span><span class=o>:</span> <span class=o>-</span><span class=mi>1</span> <span class=p>});</span>
+</code></pre></div></p>
+<p>To sort by the fewest amount of players, you can do the opposite. Use <code>1</code>, <code>"asc"</code> or <code>"ascending"</code> for ascending order:</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>gameServer</span><span class=p>.</span><span class=nx>define</span><span class=p>(</span><span class=s2>&quot;battle&quot;</span><span class=p>,</span> <span class=nx>BattleRoom</span><span class=p>)</span>
+  <span class=p>.</span><span class=nx>sortBy</span><span class=p>({</span> <span class=nx>clients</span>: <span class=kt>1</span> <span class=p>});</span>
+</code></pre></div></p>
+<hr />
+<h4 id="listening-to-room-instance-events">Listening to room instance events<a class="headerlink" href="#listening-to-room-instance-events" title="Permanent link">&para;</a></h4>
+<p>The <code>define</code> method will return the registered handler instance, which you can listen to match-making events from outside the room instance scope. Such as:</p>
+<ul>
+<li><code>"create"</code> - when a room has been created</li>
+<li><code>"dispose"</code> - when a room has been disposed</li>
+<li><code>"join"</code> - when a client join a room</li>
+<li><code>"leave"</code> - when a client leave a room</li>
+<li><code>"lock"</code> - when a room has been locked</li>
+<li><code>"unlock"</code> - when a room has been unlocked</li>
+</ul>
+<p><strong>Usage:</strong></p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>gameServer</span><span class=p>.</span><span class=nx>define</span><span class=p>(</span><span class=s2>&quot;chat&quot;</span><span class=p>,</span> <span class=nx>ChatRoom</span><span class=p>)</span>
+  <span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s2>&quot;create&quot;</span><span class=p>,</span> <span class=p>(</span><span class=nx>room</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;room created:&quot;</span><span class=p>,</span> <span class=nx>room</span><span class=p>.</span><span class=nx>roomId</span><span class=p>))</span>
+  <span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s2>&quot;dispose&quot;</span><span class=p>,</span> <span class=p>(</span><span class=nx>room</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;room disposed:&quot;</span><span class=p>,</span> <span class=nx>room</span><span class=p>.</span><span class=nx>roomId</span><span class=p>))</span>
+  <span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s2>&quot;join&quot;</span><span class=p>,</span> <span class=p>(</span><span class=nx>room</span><span class=p>,</span> <span class=nx>client</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>client</span><span class=p>.</span><span class=nx>id</span><span class=p>,</span> <span class=s2>&quot;joined&quot;</span><span class=p>,</span> <span class=nx>room</span><span class=p>.</span><span class=nx>roomId</span><span class=p>))</span>
+  <span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s2>&quot;leave&quot;</span><span class=p>,</span> <span class=p>(</span><span class=nx>room</span><span class=p>,</span> <span class=nx>client</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>client</span><span class=p>.</span><span class=nx>id</span><span class=p>,</span> <span class=s2>&quot;left&quot;</span><span class=p>,</span> <span class=nx>room</span><span class=p>.</span><span class=nx>roomId</span><span class=p>));</span>
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It's completely discouraged to manipulate a room's state through these events. Use the <a href="/server/room/#abstract-methods">abstract methods</a> in your room handler instead.</p>
+</div>
+<h3 id="attach-options-any"><code>attach (options: any)</code><a class="headerlink" href="#attach-options-any" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>You usually do not need to call this. Use it only if you have a very specific reason to do so.</p>
+</blockquote>
+<p>Attaches or creates the WebSocket server.</p>
+<ul>
+<li><code>options.server</code>: The HTTP server to attach the WebSocket server on.</li>
+<li><code>options.ws</code>: An existing WebSocket server to be re-used.</li>
+</ul>
+<div class=md-fenced-code-tabs id=tab-tab-group-12><input name=tab-group-12 type=radio id=tab-group-12-0_javascript checked=checked class=code-tab data-lang=javascript aria-controls=tab-group-12-0_javascript-panel role=tab><label for=tab-group-12-0_javascript class=code-tab-label data-lang=javascript id=tab-group-12-0_javascript-label>Express</label><div class=code-tabpanel role=tabpanel data-lang=javascript id=tab-group-12-0_javascript-panel aria-labelledby=tab-group-12-0_javascript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=nx>express</span> <span class=nx>from</span> <span class=s2>&quot;express&quot;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=p>{</span> <span class=nx>Server</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+
+<span class=kr>const</span> <span class=nx>app</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>express</span><span class=p>();</span>
+<span class=kr>const</span> <span class=nx>gameServer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Server</span><span class=p>();</span>
+
+<span class=nx>gameServer</span><span class=p>.</span><span class=nx>attach</span><span class=p>({</span> <span class=nx>server</span><span class=o>:</span> <span class=nx>app</span> <span class=p>});</span>
+</code></pre></div></div><input name=tab-group-12 type=radio id=tab-group-12-1_javascript class=code-tab data-lang=javascript aria-controls=tab-group-12-1_javascript-panel role=tab><label for=tab-group-12-1_javascript class=code-tab-label data-lang=javascript id=tab-group-12-1_javascript-label>http.createServer</label><div class=code-tabpanel role=tabpanel data-lang=javascript id=tab-group-12-1_javascript-panel aria-labelledby=tab-group-12-1_javascript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=nx>http</span> <span class=nx>from</span> <span class=s2>&quot;http&quot;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=p>{</span> <span class=nx>Server</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+
+<span class=kr>const</span> <span class=nx>httpServer</span> <span class=o>=</span> <span class=nx>http</span><span class=p>.</span><span class=nx>createServer</span><span class=p>();</span>
+<span class=kr>const</span> <span class=nx>gameServer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Server</span><span class=p>();</span>
+
+<span class=nx>gameServer</span><span class=p>.</span><span class=nx>attach</span><span class=p>({</span> <span class=nx>server</span><span class=o>:</span> <span class=nx>httpServer</span> <span class=p>});</span>
+</code></pre></div></div><input name=tab-group-12 type=radio id=tab-group-12-2_javascript class=code-tab data-lang=javascript aria-controls=tab-group-12-2_javascript-panel role=tab><label for=tab-group-12-2_javascript class=code-tab-label data-lang=javascript id=tab-group-12-2_javascript-label>WebSocket.Server</label><div class=code-tabpanel role=tabpanel data-lang=javascript id=tab-group-12-2_javascript-panel aria-labelledby=tab-group-12-2_javascript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=nx>http</span> <span class=nx>from</span> <span class=s2>&quot;http&quot;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=nx>express</span> <span class=nx>from</span> <span class=s2>&quot;express&quot;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=nx>ws</span> <span class=nx>from</span> <span class=s2>&quot;ws&quot;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=p>{</span> <span class=nx>Server</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+
+<span class=kr>const</span> <span class=nx>app</span> <span class=o>=</span> <span class=nx>express</span><span class=p>();</span>
+<span class=kr>const</span> <span class=nx>server</span> <span class=o>=</span> <span class=nx>http</span><span class=p>.</span><span class=nx>createServer</span><span class=p>(</span><span class=nx>app</span><span class=p>);</span>
+<span class=kr>const</span> <span class=nx>wss</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>WebSocket</span><span class=p>.</span><span class=nx>Server</span><span class=p>({</span>
+    <span class=c1>// your custom WebSocket.Server setup.</span>
+<span class=p>});</span>
+
+<span class=kr>const</span> <span class=nx>gameServer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Server</span><span class=p>();</span>
+<span class=nx>gameServer</span><span class=p>.</span><span class=nx>attach</span><span class=p>({</span> <span class=nx>ws</span><span class=o>:</span> <span class=nx>wss</span> <span class=p>});</span>
+</code></pre></div></div></div>
+
+<h3 id="listen-port-number"><code>listen (port: number)</code><a class="headerlink" href="#listen-port-number" title="Permanent link">&para;</a></h3>
+<p>Binds the WebSocket server into the specified port.</p>
+<h3 id="onshutdown-callback-function"><code>onShutdown (callback: Function)</code><a class="headerlink" href="#onshutdown-callback-function" title="Permanent link">&para;</a></h3>
+<p>Register a callback that should be called before the process shut down. See <a href="/server/graceful-shutdown/">graceful shutdown</a> for more details.</p>
+<h3 id="gracefullyshutdown-exit-boolean"><code>gracefullyShutdown (exit: boolean)</code><a class="headerlink" href="#gracefullyshutdown-exit-boolean" title="Permanent link">&para;</a></h3>
+<p>Shutdown all rooms and clean-up its cached data. Returns a promise that fulfils
+whenever the clean-up has been complete.</p>
+<p>This method is called automatically unless <code>gracefullyShutdown: false</code> has been provided on <code>Server</code> constructor.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../how-to/rate-limit/" title="限速" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                限速
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../room/" title="Room" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Room
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Endel Dreyer
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://www.patreon.com/endel" class="md-footer-social__link fa fa-money"></a>
+    
+      <a href="https://discuss.colyseus.io" class="md-footer-social__link fa fa-comments"></a>
+    
+      <a href="http://colyseus.io" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/colyseus" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/colyseus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/game-std-io/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b41f3d20.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../javascripts/main.js"></script>
+      
+        <script src="../../javascripts/ads.js"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

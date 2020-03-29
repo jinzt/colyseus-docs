@@ -1,0 +1,1809 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation for Colyseus Multiplayer Game Server for Node.js">
+      
+      
+        <link rel="canonical" href="https://colyseus.io/server/room/">
+      
+      
+        <meta name="author" content="Endel Dreyer">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+    
+    
+      
+        <title>Room - Colyseus 0.12.x</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.8c900955.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/code-tabs.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ads.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#room-api-server-side" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://colyseus.io/" title="Colyseus 0.12.x" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/logo-white.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Colyseus 0.12.x
+              </span>
+              <span class="md-header-nav__topic">
+                Room
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/colyseus/colyseus/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      colyseus/colyseus
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://colyseus.io/" title="Colyseus 0.12.x" class="md-nav__button md-logo">
+      
+        <img src="../../images/logo-white.png" width="48" height="48">
+      
+    </a>
+    Colyseus 0.12.x
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/colyseus/colyseus/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      colyseus/colyseus
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      入门
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        入门
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/server/" title="服务器段" class="md-nav__link">
+      服务器段
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/javascript-client/" title="JavaScript 客户端" class="md-nav__link">
+      JavaScript 客户端
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/unity3d-client/" title="Unity3d 客户端" class="md-nav__link">
+      Unity3d 客户端
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      如何使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        如何使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/password-protect-room/" title="用密码保护房间" class="md-nav__link">
+      用密码保护房间
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/deny-player-join-a-room/" title="拒绝玩家加入房间" class="md-nav__link">
+      拒绝玩家加入房间
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/rate-limit/" title="限速" class="md-nav__link">
+      限速
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      服务器 API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        服务器 API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/" title="Server" class="md-nav__link">
+      Server
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Room
+      </label>
+    
+    <a href="./" title="Room" class="md-nav__link md-nav__link--active">
+      Room
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract-methods" title="Abstract methods" class="md-nav__link">
+    Abstract methods
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oncreate-options" title="onCreate (options)" class="md-nav__link">
+    onCreate (options)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onauth-client-options-request" title="onAuth (client, options, request)" class="md-nav__link">
+    onAuth (client, options, request)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onjoin-client-options-auth" title="onJoin (client, options, auth?)" class="md-nav__link">
+    onJoin (client, options, auth?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onmessage-client-data" title="onMessage (client, data)" class="md-nav__link">
+    onMessage (client, data)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onleave-client-consented" title="onLeave (client, consented)" class="md-nav__link">
+    onLeave (client, consented)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ondispose" title="onDispose ()" class="md-nav__link">
+    onDispose ()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-room" title="Example room" class="md-nav__link">
+    Example room
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-properties" title="Public properties" class="md-nav__link">
+    Public properties
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roomid-string" title="roomId: string" class="md-nav__link">
+    roomId: string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roomname-string" title="roomName: string" class="md-nav__link">
+    roomName: string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-t" title="state: T" class="md-nav__link">
+    state: T
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clients-websocket" title="clients: WebSocket[]" class="md-nav__link">
+    clients: WebSocket[]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxclients-number" title="maxClients: number" class="md-nav__link">
+    maxClients: number
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patchrate-number" title="patchRate: number" class="md-nav__link">
+    patchRate: number
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autodispose-boolean" title="autoDispose: boolean" class="md-nav__link">
+    autoDispose: boolean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locked-boolean-read-only" title="locked: boolean (read-only)" class="md-nav__link">
+    locked: boolean (read-only)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-clocktimer" title="clock: ClockTimer" class="md-nav__link">
+    clock: ClockTimer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#presence-presence" title="presence: Presence" class="md-nav__link">
+    presence: Presence
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-methods" title="Public methods" class="md-nav__link">
+    Public methods
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setstate-object" title="setState (object)" class="md-nav__link">
+    setState (object)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setsimulationinterval-callback-milliseconds166" title="setSimulationInterval (callback[, milliseconds=16.6])" class="md-nav__link">
+    setSimulationInterval (callback[, milliseconds=16.6])
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setpatchrate-milliseconds" title="setPatchRate (milliseconds)" class="md-nav__link">
+    setPatchRate (milliseconds)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setprivate-bool" title="setPrivate (bool)" class="md-nav__link">
+    setPrivate (bool)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setmetadata-metadata" title="setMetadata (metadata)" class="md-nav__link">
+    setMetadata (metadata)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setseatreservationtime-seconds" title="setSeatReservationTime (seconds)" class="md-nav__link">
+    setSeatReservationTime (seconds)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send-client-message" title="send (client, message)" class="md-nav__link">
+    send (client, message)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-message-options" title="broadcast (message, options?)" class="md-nav__link">
+    broadcast (message, options?)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-examples" title="Broadcast examples" class="md-nav__link">
+    Broadcast examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lock" title="lock ()" class="md-nav__link">
+    lock ()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unlock" title="unlock ()" class="md-nav__link">
+    unlock ()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowreconnection-client-seconds" title="allowReconnection (client, seconds?)" class="md-nav__link">
+    allowReconnection (client, seconds?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disconnect" title="disconnect ()" class="md-nav__link">
+    disconnect ()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../client/" title="Client" class="md-nav__link">
+      Client
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../timing-events/" title="Timing events" class="md-nav__link">
+      Timing events
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../matchmaker/" title="Match-maker API" class="md-nav__link">
+      Match-maker API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../authentication/" title="Authentication API" class="md-nav__link">
+      Authentication API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../presence/" title="Presence" class="md-nav__link">
+      Presence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../graceful-shutdown/" title="Graceful shutdown" class="md-nav__link">
+      Graceful shutdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../state-serialization/" title="Custom State Serialization" class="md-nav__link">
+      Custom State Serialization
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      客户端 API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        客户端 API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client/client/" title="Client" class="md-nav__link">
+      Client
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client/room/" title="Room" class="md-nav__link">
+      Room
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      状态处理
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        状态处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../state/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../state/schema/" title="Schema" class="md-nav__link">
+      Schema
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../state/fossil-delta/" title="Fossil Delta (deprecated)" class="md-nav__link">
+      Fossil Delta (deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../authentication/" title="Authentication" class="md-nav__link">
+      Authentication
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../push/" title="Push Notifications" class="md-nav__link">
+      Push Notifications
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../debugging/" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deployment/" title="Deployment" class="md-nav__link">
+      Deployment
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../scalability/" title="Scalability" class="md-nav__link">
+      Scalability
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Migrating
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Migrating
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.12/" title="0.12.x" class="md-nav__link">
+      0.12.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.11/" title="0.11.x" class="md-nav__link">
+      0.11.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.10/" title="0.10.x" class="md-nav__link">
+      0.10.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.9/" title="0.9.x" class="md-nav__link">
+      0.9.x
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract-methods" title="Abstract methods" class="md-nav__link">
+    Abstract methods
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oncreate-options" title="onCreate (options)" class="md-nav__link">
+    onCreate (options)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onauth-client-options-request" title="onAuth (client, options, request)" class="md-nav__link">
+    onAuth (client, options, request)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onjoin-client-options-auth" title="onJoin (client, options, auth?)" class="md-nav__link">
+    onJoin (client, options, auth?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onmessage-client-data" title="onMessage (client, data)" class="md-nav__link">
+    onMessage (client, data)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onleave-client-consented" title="onLeave (client, consented)" class="md-nav__link">
+    onLeave (client, consented)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ondispose" title="onDispose ()" class="md-nav__link">
+    onDispose ()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-room" title="Example room" class="md-nav__link">
+    Example room
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-properties" title="Public properties" class="md-nav__link">
+    Public properties
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roomid-string" title="roomId: string" class="md-nav__link">
+    roomId: string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roomname-string" title="roomName: string" class="md-nav__link">
+    roomName: string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-t" title="state: T" class="md-nav__link">
+    state: T
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clients-websocket" title="clients: WebSocket[]" class="md-nav__link">
+    clients: WebSocket[]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxclients-number" title="maxClients: number" class="md-nav__link">
+    maxClients: number
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patchrate-number" title="patchRate: number" class="md-nav__link">
+    patchRate: number
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autodispose-boolean" title="autoDispose: boolean" class="md-nav__link">
+    autoDispose: boolean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locked-boolean-read-only" title="locked: boolean (read-only)" class="md-nav__link">
+    locked: boolean (read-only)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-clocktimer" title="clock: ClockTimer" class="md-nav__link">
+    clock: ClockTimer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#presence-presence" title="presence: Presence" class="md-nav__link">
+    presence: Presence
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-methods" title="Public methods" class="md-nav__link">
+    Public methods
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setstate-object" title="setState (object)" class="md-nav__link">
+    setState (object)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setsimulationinterval-callback-milliseconds166" title="setSimulationInterval (callback[, milliseconds=16.6])" class="md-nav__link">
+    setSimulationInterval (callback[, milliseconds=16.6])
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setpatchrate-milliseconds" title="setPatchRate (milliseconds)" class="md-nav__link">
+    setPatchRate (milliseconds)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setprivate-bool" title="setPrivate (bool)" class="md-nav__link">
+    setPrivate (bool)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setmetadata-metadata" title="setMetadata (metadata)" class="md-nav__link">
+    setMetadata (metadata)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setseatreservationtime-seconds" title="setSeatReservationTime (seconds)" class="md-nav__link">
+    setSeatReservationTime (seconds)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send-client-message" title="send (client, message)" class="md-nav__link">
+    send (client, message)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-message-options" title="broadcast (message, options?)" class="md-nav__link">
+    broadcast (message, options?)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-examples" title="Broadcast examples" class="md-nav__link">
+    Broadcast examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lock" title="lock ()" class="md-nav__link">
+    lock ()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unlock" title="unlock ()" class="md-nav__link">
+    unlock ()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowreconnection-client-seconds" title="allowReconnection (client, seconds?)" class="md-nav__link">
+    allowReconnection (client, seconds?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disconnect" title="disconnect ()" class="md-nav__link">
+    disconnect ()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/colyseus/docs/edit/master/docs/server/room.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="room-api-server-side">Room API (Server-side)<a class="headerlink" href="#room-api-server-side" title="Permanent link">&para;</a></h1>
+<p>Considering that you already <a href="/server/api">set up your server</a>, now it's time to register room handlers and start accepting connections from your users.</p>
+<p>You'll define room handlers creating classes that extend from <code>Room</code>.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-0-0_typescript-panel role=tab><label for=tab-group-0-0_typescript class=code-tab-label data-lang=typescript id=tab-group-0-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-0-0_typescript-panel aria-labelledby=tab-group-0-0_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=nx>http</span> <span class=nx>from</span> <span class=s2>&quot;http&quot;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=p>{</span> <span class=nx>Room</span><span class=p>,</span> <span class=nx>Client</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+
+<span class=kr>export</span> <span class=kr>class</span> <span class=nx>MyRoom</span> <span class=kr>extends</span> <span class=nx>Room</span> <span class=p>{</span>
+    <span class=c1>// When room is initialized</span>
+    <span class=nx>onCreate</span> <span class=p>(</span><span class=nx>options</span>: <span class=kt>any</span><span class=p>)</span> <span class=p>{</span> <span class=p>}</span>
+
+    <span class=c1>// Authorize client based on provided options before WebSocket handshake is complete</span>
+    <span class=nx>onAuth</span> <span class=p>(</span><span class=nx>client</span>: <span class=kt>Client</span><span class=p>,</span> <span class=nx>options</span>: <span class=kt>any</span><span class=p>,</span> <span class=nx>request</span>: <span class=kt>http.IncomingMessage</span><span class=p>)</span> <span class=p>{</span> <span class=p>}</span>
+
+    <span class=c1>// When client successfully join the room</span>
+    <span class=nx>onJoin</span> <span class=p>(</span><span class=nx>client</span>: <span class=kt>Client</span><span class=p>,</span> <span class=nx>options</span>: <span class=kt>any</span><span class=p>,</span> <span class=nx>auth</span>: <span class=kt>any</span><span class=p>)</span> <span class=p>{</span> <span class=p>}</span>
+
+    <span class=c1>// When a client sends a message</span>
+    <span class=nx>onMessage</span> <span class=p>(</span><span class=nx>client</span>: <span class=kt>Client</span><span class=p>,</span> <span class=nx>message</span>: <span class=kt>any</span><span class=p>)</span> <span class=p>{</span> <span class=p>}</span>
+
+    <span class=c1>// When a client leaves the room</span>
+    <span class=nx>onLeave</span> <span class=p>(</span><span class=nx>client</span>: <span class=kt>Client</span><span class=p>,</span> <span class=nx>consented</span>: <span class=kt>boolean</span><span class=p>)</span> <span class=p>{</span> <span class=p>}</span>
+
+    <span class=c1>// Cleanup callback, called after there are no more clients in the room. (see `autoDispose`)</span>
+    <span class=nx>onDispose</span> <span class=p>()</span> <span class=p>{</span> <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></div><input name=tab-group-0 type=radio id=tab-group-0-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-0-1_typescript-panel role=tab><label for=tab-group-0-1_typescript class=code-tab-label data-lang=typescript id=tab-group-0-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-0-1_typescript-panel aria-labelledby=tab-group-0-1_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>const</span> <span class=nx>colyseus</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;colyseus&#39;</span><span class=p>);</span>
+
+<span class=kr>export</span> <span class=kr>class</span> <span class=nx>MyRoom</span> <span class=kr>extends</span> <span class=nx>colyseus</span><span class=p>.</span><span class=nx>Room</span> <span class=p>{</span>
+    <span class=c1>// When room is initialized</span>
+    <span class=nx>onCreate</span> <span class=p>(</span><span class=nx>options</span><span class=p>)</span> <span class=p>{</span> <span class=p>}</span>
+
+    <span class=c1>// Authorize client based on provided options before WebSocket handshake is complete</span>
+    <span class=nx>onAuth</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>options</span><span class=p>,</span> <span class=nx>request</span><span class=p>)</span> <span class=p>{</span> <span class=p>}</span>
+
+    <span class=c1>// When client successfully join the room</span>
+    <span class=nx>onJoin</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>options</span><span class=p>,</span> <span class=nx>auth</span><span class=p>)</span> <span class=p>{</span> <span class=p>}</span>
+
+    <span class=c1>// When a client sends a message</span>
+    <span class=nx>onMessage</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>message</span><span class=p>)</span> <span class=p>{</span> <span class=p>}</span>
+
+    <span class=c1>// When a client leaves the room</span>
+    <span class=nx>onLeave</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>consented</span><span class=p>)</span> <span class=p>{</span> <span class=p>}</span>
+
+    <span class=c1>// Cleanup callback, called after there are no more clients in the room. (see `autoDispose`)</span>
+    <span class=nx>onDispose</span> <span class=p>()</span> <span class=p>{</span> <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></div></div>
+
+<h2 id="abstract-methods">Abstract methods<a class="headerlink" href="#abstract-methods" title="Permanent link">&para;</a></h2>
+<p>Room handlers can implement all of these methods.</p>
+<h3 id="oncreate-options"><code>onCreate (options)</code><a class="headerlink" href="#oncreate-options" title="Permanent link">&para;</a></h3>
+<p>Is called once when the room is initialized. You may specify custom initialization options when registering the room handler.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code>options</code> will contain the merged values you specified on <a href="/server/api/#define-name-string-handler-room-options-any">Server#define()</a> + the options provided by <a href="/client/client/#joinorcreate-roomname-string-options-any"><code>client.joinOrCreate()</code></a> or <a href="/client/client/#create-roomname-string-options-any"><code>client.create()</code></a></p>
+</div>
+<h3 id="onauth-client-options-request"><code>onAuth (client, options, request)</code><a class="headerlink" href="#onauth-client-options-request" title="Permanent link">&para;</a></h3>
+<p>Can be used to verify authenticity of the client that's joining the room.</p>
+<p>If left non-implemented it returns <code>true</code>, allowing any client to connect.</p>
+<p>See <a href="/server/authentication">Authentication API</a> section.</p>
+<div class="admonition tip">
+<p class="admonition-title">Getting player's IP address</p>
+<p>You can use the <code>request</code> variable to retrieve the user's IP address, http headers, and more. E.g.: <code>request.headers['x-forwarded-for'] || request.connection.remoteAddress</code></p>
+</div>
+<h3 id="onjoin-client-options-auth"><code>onJoin (client, options, auth?)</code><a class="headerlink" href="#onjoin-client-options-auth" title="Permanent link">&para;</a></h3>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>client</code>: The <a href="/server/client"><code>client</code></a> instance.</li>
+<li><code>options</code>: merged values specified on <a href="/server/api/#define-name-string-handler-room-options-any">Server#define()</a> with the options provided the client on <a href="/client/client/#join-roomname-string-options-any"><code>client.join()</code></a></li>
+<li><code>auth</code>: (optional) auth data returned by <a href="#onauth-client-options-request"><code>onAuth</code></a> method.</li>
+</ul>
+<p>Is called when the client successfully joins the room, after <code>requestJoin</code> and <code>onAuth</code> has succeeded.</p>
+<h3 id="onmessage-client-data"><code>onMessage (client, data)</code><a class="headerlink" href="#onmessage-client-data" title="Permanent link">&para;</a></h3>
+<p>Is called when a client sends a message to the server. Here's where you'll process client actions to update the <a href="/state/overview/">Room State</a></p>
+<h3 id="onleave-client-consented"><code>onLeave (client, consented)</code><a class="headerlink" href="#onleave-client-consented" title="Permanent link">&para;</a></h3>
+<p>Is called when a client leaves the room. If the disconnection was <a href="/client/room/#leave">initiated by the client</a>, the <code>consented</code> parameter will be <code>true</code>, otherwise, it will be <code>false</code>.</p>
+<p>You can define this function as <code>async</code>. See <a href="/server/graceful-shutdown">graceful shutdown</a></p>
+<h3 id="ondispose"><code>onDispose ()</code><a class="headerlink" href="#ondispose" title="Permanent link">&para;</a></h3>
+<p>Cleanup callback, called after there are no more clients in the room.</p>
+<p>You can define this function as <code>async</code>. See <a href="/server/graceful-shutdown">graceful shutdown</a></p>
+<h3 id="example-room">Example room<a class="headerlink" href="#example-room" title="Permanent link">&para;</a></h3>
+<p>This example demonstrates an entire room implementing the <code>onCreate</code>, <code>onJoin</code> and <code>onMessage</code> methods.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=p>{</span> <span class=nx>Room</span><span class=p>,</span> <span class=nx>Client</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=p>{</span> <span class=nx>Schema</span><span class=p>,</span> <span class=nx>MapSchema</span><span class=p>,</span> <span class=nx>type</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;@colyseus/schema&quot;</span><span class=p>;</span>
+
+<span class=c1>// An abstract player object, demonstrating a potential 2D world position</span>
+<span class=kr>export</span> <span class=kr>class</span> <span class=nx>Player</span> <span class=p>{</span>
+  <span class=nx>x</span>: <span class=kt>number</span> <span class=o>=</span> <span class=mf>0.11</span><span class=p>;</span>
+  <span class=nx>y</span>: <span class=kt>number</span> <span class=o>=</span> <span class=mf>2.22</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=c1>// Our custom game state, an ArraySchema of type Player only at the moment</span>
+<span class=kr>export</span> <span class=kr>class</span> <span class=nx>State</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+  <span class=kd>@type</span><span class=p>({</span> <span class=nx>map</span><span class=o>:</span> <span class=s2>&quot;string&quot;</span> <span class=p>})</span>
+  <span class=nx>players</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>MapSchema</span><span class=o>&lt;</span><span class=nx>Player</span><span class=o>&gt;</span><span class=p>();</span>
+<span class=p>}</span>
+
+<span class=kr>export</span> <span class=kr>class</span> <span class=nx>GameRoom</span> <span class=kr>extends</span> <span class=nx>Room</span><span class=o>&lt;</span><span class=nx>State</span><span class=o>&gt;</span> <span class=p>{</span>
+  <span class=c1>// Colyseus will invoke when creating the room instance</span>
+  <span class=nx>onCreate</span><span class=p>(</span><span class=nx>options</span>: <span class=kt>any</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// initialize empty room state</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>setState</span><span class=p>(</span><span class=k>new</span> <span class=nx>State</span><span class=p>());</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Called every time a client joins</span>
+  <span class=nx>onJoin</span><span class=p>(</span><span class=nx>client</span>: <span class=kt>Client</span><span class=p>,</span> <span class=nx>options</span>: <span class=kt>any</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span><span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span><span class=p>]</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Player</span><span class=p>();</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Called every time this room receives a message</span>
+  <span class=nx>onMessage</span><span class=p>(</span><span class=nx>client</span>: <span class=kt>Client</span><span class=p>,</span> <span class=nx>message</span>: <span class=kt>any</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Retrieve a previously stored player by their sessionId</span>
+    <span class=kr>const</span> <span class=nx>player</span> <span class=o>=</span> <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span><span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span><span class=p>];</span>
+
+    <span class=c1>// Pretend that we sent the room the message: {command: &quot;left&quot;}</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>message</span><span class=p>.</span><span class=nx>command</span> <span class=o>===</span> <span class=s2>&quot;left&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=nx>player</span><span class=p>.</span><span class=nx>x</span> <span class=o>-=</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>message</span><span class=p>.</span><span class=nx>command</span> <span class=o>===</span> <span class=s2>&quot;right&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=nx>player</span><span class=p>.</span><span class=nx>x</span> <span class=o>+=</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=o>+</span> <span class=s2>&quot; at, x: &quot;</span> <span class=o>+</span> <span class=nx>player</span><span class=p>.</span><span class=nx>x</span><span class=p>,</span> <span class=s2>&quot;y: &quot;</span> <span class=o>+</span> <span class=nx>player</span><span class=p>.</span><span class=nx>y</span><span class=p>);</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></p>
+<h2 id="public-properties">Public properties<a class="headerlink" href="#public-properties" title="Permanent link">&para;</a></h2>
+<h3 id="roomid-string"><code>roomId: string</code><a class="headerlink" href="#roomid-string" title="Permanent link">&para;</a></h3>
+<p>A unique, auto-generated, 9-character-long id of the room.</p>
+<h3 id="roomname-string"><code>roomName: string</code><a class="headerlink" href="#roomname-string" title="Permanent link">&para;</a></h3>
+<p>The name of the room you provided as first argument for <a href="/server/api/#define-name-string-handler-room-options-any"><code>gameServer.define()</code></a>.</p>
+<h3 id="state-t"><code>state: T</code><a class="headerlink" href="#state-t" title="Permanent link">&para;</a></h3>
+<p>The state instance you provided to <a href="#setstate-object"><code>setState()</code></a>.</p>
+<h3 id="clients-websocket"><code>clients: WebSocket[]</code><a class="headerlink" href="#clients-websocket" title="Permanent link">&para;</a></h3>
+<p>The array of connected clients. See <a href="/server/client">Web-Socket Client</a>.</p>
+<h3 id="maxclients-number"><code>maxClients: number</code><a class="headerlink" href="#maxclients-number" title="Permanent link">&para;</a></h3>
+<p>Maximum number of clients allowed to connect into the room. When room reaches
+this limit, it is locked automatically. Unless the room was explicitly locked by
+you via <a href="#lock">lock()</a> method, the room will be unlocked as soon as a client
+disconnects from it.</p>
+<h3 id="patchrate-number"><code>patchRate: number</code><a class="headerlink" href="#patchrate-number" title="Permanent link">&para;</a></h3>
+<p>Frequency to send the room state to connected clients, in milliseconds. Default is <code>50</code>ms (20fps)</p>
+<h3 id="autodispose-boolean"><code>autoDispose: boolean</code><a class="headerlink" href="#autodispose-boolean" title="Permanent link">&para;</a></h3>
+<p>Automatically dispose the room when last client disconnect. Default is <code>true</code></p>
+<h3 id="locked-boolean-read-only"><code>locked: boolean</code> (read-only)<a class="headerlink" href="#locked-boolean-read-only" title="Permanent link">&para;</a></h3>
+<p>This property will change on these situations:</p>
+<ul>
+<li>The maximum number of allowed clients has been reached (<code>maxClients</code>)</li>
+<li>You manually locked, or unlocked the room using <a href="#lock"><code>lock()</code></a> or <a href="#unlock"><code>unlock()</code></a>.</li>
+</ul>
+<h3 id="clock-clocktimer"><code>clock: ClockTimer</code><a class="headerlink" href="#clock-clocktimer" title="Permanent link">&para;</a></h3>
+<p>A <a href="https://github.com/gamestdio/timer#api"><code>ClockTimer</code></a> instance, used for
+<a href="/server/timing-events">timing events</a>.</p>
+<h3 id="presence-presence"><code>presence: Presence</code><a class="headerlink" href="#presence-presence" title="Permanent link">&para;</a></h3>
+<p>The <code>presence</code> instance. Check <a href="/server/presence">Presence API</a> for more details.</p>
+<h2 id="public-methods">Public methods<a class="headerlink" href="#public-methods" title="Permanent link">&para;</a></h2>
+<p>Room handlers have these methods available.</p>
+<h3 id="setstate-object"><code>setState (object)</code><a class="headerlink" href="#setstate-object" title="Permanent link">&para;</a></h3>
+<p>Set the new room state instance. See <a href="/state/overview/">State Handling</a> for more details on the state object. It's highly recommended to use the new <a href="/state/schema/">Schema Serializer</a> to handle your state.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not call this method for updates in the room state. The binary patch algorithm is re-set every time you call it.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You usually will call this method only once during <a href="#onCreate-options"><code>onCreate()</code></a> in your room handler.</p>
+</div>
+<h3 id="setsimulationinterval-callback-milliseconds166"><code>setSimulationInterval (callback[, milliseconds=16.6])</code><a class="headerlink" href="#setsimulationinterval-callback-milliseconds166" title="Permanent link">&para;</a></h3>
+<p>(Optional) Set a simulation interval that can change the state of the game. The simulation interval is your game loop. Default simulation interval: 16.6ms (60fps)</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>onCreate</span> <span class=p>()</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>setSimulationInterval</span><span class=p>((</span><span class=nx>deltaTime</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=k>this</span><span class=p>.</span><span class=nx>update</span><span class=p>(</span><span class=nx>deltaTime</span><span class=p>));</span>
+<span class=p>}</span>
+
+<span class=nx>update</span> <span class=p>(</span><span class=nx>deltaTime</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// implement your physics or world updates here!</span>
+    <span class=c1>// this is a good place to update the room state</span>
+<span class=p>}</span>
+</code></pre></div></p>
+<h3 id="setpatchrate-milliseconds"><code>setPatchRate (milliseconds)</code><a class="headerlink" href="#setpatchrate-milliseconds" title="Permanent link">&para;</a></h3>
+<p>Set frequency the patched state should be sent to all clients. Default is <code>50ms</code> (20fps)</p>
+<h3 id="setprivate-bool"><code>setPrivate (bool)</code><a class="headerlink" href="#setprivate-bool" title="Permanent link">&para;</a></h3>
+<p>Set the room listing as private (or revert to public, if <code>false</code> is provided).</p>
+<p>Private rooms are not listed in the <a href="/client/client/#getavailablerooms-roomname-string"><code>getAvailableRooms()</code></a> method.</p>
+<h3 id="setmetadata-metadata"><code>setMetadata (metadata)</code><a class="headerlink" href="#setmetadata-metadata" title="Permanent link">&para;</a></h3>
+<p>Set metadata to this room. Each room instance may have metadata attached to it - the only purpose for attaching metadata is to differentiate one room from another when getting the list of available rooms from the client-side, to connect to it by its <code>roomId</code>, using <a href="/client/client/#getavailablerooms-roomname"><code>client.getAvailableRooms()</code></a>.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=c1>// server-side</span>
+<span class=k>this</span><span class=p>.</span><span class=nx>setMetadata</span><span class=p>({</span> <span class=nx>friendlyFire</span>: <span class=kt>true</span> <span class=p>});</span>
+</code></pre></div></p>
+<p>Now that a room has metadata attached to it, the client-side can check which room has <code>friendlyFire</code>, for example, and connect directly to it via its <code>roomId</code>:</p>
+<p> <div class=codehilite><pre><span></span><code><span class=c1>// client-side</span>
+<span class=nx>client</span><span class=p>.</span><span class=nx>getAvailableRooms</span><span class=p>(</span><span class=s2>&quot;battle&quot;</span><span class=p>).</span><span class=nx>then</span><span class=p>(</span><span class=nx>rooms</span> <span class=p>=&gt;</span> <span class=p>{</span>
+  <span class=k>for</span> <span class=p>(</span><span class=kd>var</span> <span class=nx>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span> <span class=nx>i</span><span class=o>&lt;</span><span class=nx>rooms</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>room</span><span class=p>.</span><span class=nx>metadata</span> <span class=o>&amp;&amp;</span> <span class=nx>room</span><span class=p>.</span><span class=nx>metadata</span><span class=p>.</span><span class=nx>friendlyFire</span><span class=p>)</span> <span class=p>{</span>
+      <span class=c1>//</span>
+      <span class=c1>// join the room with `friendlyFire` by id:</span>
+      <span class=c1>//</span>
+      <span class=kd>var</span> <span class=nx>room</span> <span class=o>=</span> <span class=nx>client</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=nx>room</span><span class=p>.</span><span class=nx>roomId</span><span class=p>);</span>
+      <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>});</span>
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a href="/client/client/#getavailablerooms-roomname">See how to call <code>getAvailableRooms()</code> in other languages.</a></p>
+</div>
+<h3 id="setseatreservationtime-seconds"><code>setSeatReservationTime (seconds)</code><a class="headerlink" href="#setseatreservationtime-seconds" title="Permanent link">&para;</a></h3>
+<p>Set the number of seconds a room can wait for a client to effectively join the room. You should consider how long your <a href="#onauth-client-options-request"><code>onAuth()</code></a> will have to wait for setting a different seat reservation time. The default value is usually enough. (8 seconds)</p>
+<h3 id="send-client-message"><code>send (client, message)</code><a class="headerlink" href="#send-client-message" title="Permanent link">&para;</a></h3>
+<p>Send a message to a particular client. The <code>message</code> can be either a plain JavaScript object, or a <a href="/state/schema"><code>Schema</code></a> instance.</p>
+<p><strong>Sending a msgpack-encoded message:</strong></p>
+<p>This is the recommended way if you're using an interpreted language on the client-side, such as JavaScript or LUA.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=k>this</span><span class=p>.</span><span class=nx>send</span><span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=p>{</span> <span class=nx>message</span><span class=o>:</span> <span class=s2>&quot;Hello world!&quot;</span> <span class=p>});</span>
+</code></pre></div></p>
+<p><strong>Sending a schema-encoded message:</strong></p>
+<p>Sending schema-encoded messages is particularly useful for statically-typed languages such as C#.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=kr>class</span> <span class=nx>MyMessage</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+  <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;string&quot;</span><span class=p>)</span> <span class=nx>message</span>: <span class=kt>string</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=kr>const</span> <span class=nx>data</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>MyMessage</span><span class=p>();</span>
+<span class=nx>data</span><span class=p>.</span><span class=nx>message</span> <span class=o>=</span> <span class=s2>&quot;Hello world!&quot;</span><span class=p>;</span>
+<span class=k>this</span><span class=p>.</span><span class=nx>send</span><span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>data</span><span class=p>);</span>
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a href="/client/room/#onmessage">See how to handle these messages on client-side.</a></p>
+</div>
+<h3 id="broadcast-message-options"><code>broadcast (message, options?)</code><a class="headerlink" href="#broadcast-message-options" title="Permanent link">&para;</a></h3>
+<p>Send a message to all connected clients.</p>
+<p>Available options are:</p>
+<ul>
+<li><strong><code>except</code></strong>: a <a href="/server/client/"><code>Client</code></a> instance not to send the message to</li>
+<li><strong><code>afterNextPatch</code></strong>: waits until next patch to broadcast the message</li>
+</ul>
+<h4 id="broadcast-examples">Broadcast examples<a class="headerlink" href="#broadcast-examples" title="Permanent link">&para;</a></h4>
+<p>Broadcasting a message to all clients:</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>onMessage</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>message</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>message</span> <span class=o>===</span> <span class=s2>&quot;action&quot;</span><span class=p>)</span> <span class=p>{</span>
+        <span class=c1>// broadcast a message to all clients</span>
+        <span class=k>this</span><span class=p>.</span><span class=nx>broadcast</span><span class=p>(</span><span class=s2>&quot;an action has been taken!&quot;</span><span class=p>);</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></p>
+<p>Broadcasting a message to all clients, except the sender.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>onMessage</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>message</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>message</span> <span class=o>===</span> <span class=s2>&quot;fire&quot;</span><span class=p>)</span> <span class=p>{</span>
+        <span class=c1>// sends &quot;fire&quot; event to every client, except the one who triggered it.</span>
+        <span class=k>this</span><span class=p>.</span><span class=nx>broadcast</span><span class=p>(</span><span class=s2>&quot;fire!&quot;</span><span class=p>,</span> <span class=p>{</span> <span class=nx>except</span>: <span class=kt>client</span> <span class=p>});</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></p>
+<p>Broadcasting a message to all clients, only after a change in the state has been applied:</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>onMessage</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>message</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>message</span> <span class=o>===</span> <span class=s2>&quot;destroy&quot;</span><span class=p>)</span> <span class=p>{</span>
+        <span class=c1>// perform changes in your state!</span>
+        <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>destroySomething</span><span class=p>();</span>
+
+        <span class=c1>// this message will arrive only after new state has been applied</span>
+        <span class=k>this</span><span class=p>.</span><span class=nx>broadcast</span><span class=p>(</span><span class=s2>&quot;has been destroyed!&quot;</span><span class=p>,</span> <span class=p>{</span> <span class=nx>afterNextPatch</span>: <span class=kt>true</span> <span class=p>});</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></p>
+<p>Broadcasting a schema-encoded message:</p>
+<p> <div class=codehilite><pre><span></span><code><span class=kr>class</span> <span class=nx>MyMessage</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+  <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;string&quot;</span><span class=p>)</span> <span class=nx>message</span>: <span class=kt>string</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=c1>// ...</span>
+
+<span class=nx>onMessage</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>message</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>message</span> <span class=o>===</span> <span class=s2>&quot;action&quot;</span><span class=p>)</span> <span class=p>{</span>
+        <span class=kr>const</span> <span class=nx>data</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>MyMessage</span><span class=p>();</span>
+        <span class=nx>data</span><span class=p>.</span><span class=nx>message</span> <span class=o>=</span> <span class=s2>&quot;an action has been taken!&quot;</span><span class=p>;</span>
+        <span class=k>this</span><span class=p>.</span><span class=nx>broadcast</span><span class=p>(</span><span class=nx>data</span><span class=p>);</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a href="/client/room/#onmessage">See how to handle these onMessage() in the client-side.</a></p>
+</div>
+<h3 id="lock"><code>lock ()</code><a class="headerlink" href="#lock" title="Permanent link">&para;</a></h3>
+<p>Locking the room will remove it from the pool of available rooms for new clients to connect to.</p>
+<h3 id="unlock"><code>unlock ()</code><a class="headerlink" href="#unlock" title="Permanent link">&para;</a></h3>
+<p>Unlocking the room returns it to the pool of available rooms for new clients to connect to.</p>
+<h3 id="allowreconnection-client-seconds"><code>allowReconnection (client, seconds?)</code><a class="headerlink" href="#allowreconnection-client-seconds" title="Permanent link">&para;</a></h3>
+<p>Allow the specified client to <a href="/client/client/#reconnect-roomid-string-sessionid-string"><code>reconnect</code></a> into the room. Must be used inside <a href="#onleave-client"><code>onLeave()</code></a> method.</p>
+<p>If <strong><code>seconds</code></strong> is provided, the reconnection is going to be cancelled after the provided amout of seconds.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>async</span> <span class=nx>onLeave</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>consented</span>: <span class=kt>boolean</span><span class=p>)</span> <span class=p>{</span>
+  <span class=c1>// flag client as inactive for other users</span>
+  <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span><span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span><span class=p>].</span><span class=nx>connected</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+
+  <span class=k>try</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>consented</span><span class=p>)</span> <span class=p>{</span>
+        <span class=k>throw</span> <span class=k>new</span> <span class=nb>Error</span><span class=p>(</span><span class=s2>&quot;consented leave&quot;</span><span class=p>);</span>
+    <span class=p>}</span>
+
+    <span class=c1>// allow disconnected client to reconnect into this room until 20 seconds</span>
+    <span class=nx>await</span> <span class=k>this</span><span class=p>.</span><span class=nx>allowReconnection</span><span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=mi>20</span><span class=p>);</span>
+
+    <span class=c1>// client returned! let&#39;s re-activate it.</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span><span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span><span class=p>].</span><span class=nx>connected</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+
+  <span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=nx>e</span><span class=p>)</span> <span class=p>{</span>
+
+    <span class=c1>// 20 seconds expired. let&#39;s remove the client.</span>
+    <span class=k>delete</span> <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span><span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span><span class=p>];</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></p>
+<p>Alternatively, you may not provide the amount of <strong><code>seconds</code></strong> to automatically reject the reconnection, and reject it yourself using your own logic.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=nx>async</span> <span class=nx>onLeave</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>consented</span>: <span class=kt>boolean</span><span class=p>)</span> <span class=p>{</span>
+  <span class=c1>// flag client as inactive for other users</span>
+  <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span><span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span><span class=p>].</span><span class=nx>connected</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+
+  <span class=k>try</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>consented</span><span class=p>)</span> <span class=p>{</span>
+        <span class=k>throw</span> <span class=k>new</span> <span class=nb>Error</span><span class=p>(</span><span class=s2>&quot;consented leave&quot;</span><span class=p>);</span>
+    <span class=p>}</span>
+
+    <span class=c1>// get reconnection token</span>
+    <span class=kr>const</span> <span class=nx>reconnection</span> <span class=o>=</span> <span class=k>this</span><span class=p>.</span><span class=nx>allowReconnection</span><span class=p>(</span><span class=nx>client</span><span class=p>);</span>
+
+    <span class=c1>//</span>
+    <span class=c1>// here is the custom logic for rejecting the reconnection.</span>
+    <span class=c1>// for demonstration purposes of the API, an interval is created</span>
+    <span class=c1>// rejecting the reconnection if the player has missed 2 rounds,</span>
+    <span class=c1>// (assuming he&#39;s playing a turn-based game)</span>
+    <span class=c1>//</span>
+    <span class=c1>// in a real scenario, you would store the `reconnection` in</span>
+    <span class=c1>// your Player instance, for example, and perform this check during your</span>
+    <span class=c1>// game loop logic</span>
+    <span class=c1>//</span>
+    <span class=kr>const</span> <span class=nx>currentRound</span> <span class=o>=</span> <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>currentRound</span><span class=p>;</span>
+    <span class=kr>const</span> <span class=nx>interval</span> <span class=o>=</span> <span class=nx>setInterval</span><span class=p>(()</span> <span class=o>=&gt;</span> <span class=p>{</span>
+      <span class=k>if</span> <span class=p>((</span><span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>currentRound</span> <span class=o>-</span> <span class=nx>currentRound</span><span class=p>)</span> <span class=o>&gt;</span> <span class=mi>2</span><span class=p>)</span> <span class=p>{</span>
+        <span class=c1>// manually reject the client reconnection</span>
+        <span class=nx>reconnection</span><span class=p>.</span><span class=nx>reject</span><span class=p>();</span>
+        <span class=nx>clearInterval</span><span class=p>(</span><span class=nx>interval</span><span class=p>);</span>
+      <span class=p>}</span>
+    <span class=p>},</span> <span class=mi>1000</span><span class=p>);</span>
+
+    <span class=c1>// allow disconnected client to reconnect</span>
+    <span class=nx>await</span> <span class=nx>reconnection</span><span class=p>;</span>
+
+    <span class=c1>// client returned! let&#39;s re-activate it.</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span><span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span><span class=p>].</span><span class=nx>connected</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+
+  <span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=nx>e</span><span class=p>)</span> <span class=p>{</span>
+
+    <span class=c1>// 20 seconds expired. let&#39;s remove the client.</span>
+    <span class=k>delete</span> <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span><span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span><span class=p>];</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></p>
+<h3 id="disconnect"><code>disconnect ()</code><a class="headerlink" href="#disconnect" title="Permanent link">&para;</a></h3>
+<p>Disconnect all clients, then dispose.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../api/" title="Server" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Server
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../client/" title="Client" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Client
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Endel Dreyer
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://www.patreon.com/endel" class="md-footer-social__link fa fa-money"></a>
+    
+      <a href="https://discuss.colyseus.io" class="md-footer-social__link fa fa-comments"></a>
+    
+      <a href="http://colyseus.io" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/colyseus" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/colyseus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/game-std-io/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b41f3d20.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../javascripts/main.js"></script>
+      
+        <script src="../../javascripts/ads.js"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

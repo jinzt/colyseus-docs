@@ -1,0 +1,1598 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation for Colyseus Multiplayer Game Server for Node.js">
+      
+      
+        <link rel="canonical" href="https://colyseus.io/state/fossil-delta/">
+      
+      
+        <meta name="author" content="Endel Dreyer">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+    
+    
+      
+        <title>Fossil Delta (deprecated) - Colyseus 0.12.x</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.8c900955.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/code-tabs.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ads.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#state-handling-fossil-delta" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://colyseus.io/" title="Colyseus 0.12.x" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/logo-white.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Colyseus 0.12.x
+              </span>
+              <span class="md-header-nav__topic">
+                Fossil Delta (deprecated)
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/colyseus/colyseus/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      colyseus/colyseus
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://colyseus.io/" title="Colyseus 0.12.x" class="md-nav__button md-logo">
+      
+        <img src="../../images/logo-white.png" width="48" height="48">
+      
+    </a>
+    Colyseus 0.12.x
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/colyseus/colyseus/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      colyseus/colyseus
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      入门
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        入门
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/server/" title="服务器段" class="md-nav__link">
+      服务器段
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/javascript-client/" title="JavaScript 客户端" class="md-nav__link">
+      JavaScript 客户端
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/unity3d-client/" title="Unity3d 客户端" class="md-nav__link">
+      Unity3d 客户端
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      如何使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        如何使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/password-protect-room/" title="用密码保护房间" class="md-nav__link">
+      用密码保护房间
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/deny-player-join-a-room/" title="拒绝玩家加入房间" class="md-nav__link">
+      拒绝玩家加入房间
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/rate-limit/" title="限速" class="md-nav__link">
+      限速
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      服务器 API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        服务器 API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/api/" title="Server" class="md-nav__link">
+      Server
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/room/" title="Room" class="md-nav__link">
+      Room
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/client/" title="Client" class="md-nav__link">
+      Client
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/timing-events/" title="Timing events" class="md-nav__link">
+      Timing events
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/matchmaker/" title="Match-maker API" class="md-nav__link">
+      Match-maker API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/authentication/" title="Authentication API" class="md-nav__link">
+      Authentication API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/presence/" title="Presence" class="md-nav__link">
+      Presence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/graceful-shutdown/" title="Graceful shutdown" class="md-nav__link">
+      Graceful shutdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/state-serialization/" title="Custom State Serialization" class="md-nav__link">
+      Custom State Serialization
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      客户端 API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        客户端 API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client/client/" title="Client" class="md-nav__link">
+      Client
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client/room/" title="Room" class="md-nav__link">
+      Room
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      状态处理
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        状态处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../schema/" title="Schema" class="md-nav__link">
+      Schema
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Fossil Delta (deprecated)
+      </label>
+    
+    <a href="./" title="Fossil Delta (deprecated)" class="md-nav__link md-nav__link--active">
+      Fossil Delta (deprecated)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fossildelta-is-going-to-be-deprecated-on-future-versions-of-colyseus-make-sure-to-use-the-schema-serializer" title="FossilDelta is going to be deprecated on future versions of Colyseus. Make sure to use the Schema Serializer." class="md-nav__link">
+    FossilDelta is going to be deprecated on future versions of Colyseus. Make sure to use the Schema Serializer.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-side" title="Server-side" class="md-nav__link">
+    Server-side
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raw-object-state" title="Raw Object State" class="md-nav__link">
+    Raw Object State
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-own-data-structures" title="Your Own Data Structures" class="md-nav__link">
+    Your Own Data Structures
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#non-synchronizable-properties-nosync" title="Non-synchronizable properties (@nosync)" class="md-nav__link">
+    Non-synchronizable properties (@nosync)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#white-listing-synchronizable-properties-thorugh-tojson" title="White-listing synchronizable properties thorugh toJSON()" class="md-nav__link">
+    White-listing synchronizable properties thorugh toJSON()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations" title="Limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoid-using-map-set" title="Avoid using Map, Set" class="md-nav__link">
+    Avoid using Map, Set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-mutating-arrays" title="Avoid mutating arrays" class="md-nav__link">
+    Avoid mutating arrays
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side" title="Client-side" class="md-nav__link">
+    Client-side
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-changes-in-a-particular-variable" title="Listening for changes in a particular variable." class="md-nav__link">
+    Listening for changes in a particular variable.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-to-map-data-structures" title="Listening to map data structures" class="md-nav__link">
+    Listening to map data structures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-to-attribute-changes-of-deep-data-structures" title="Listening to attribute changes of deep data structures" class="md-nav__link">
+    Listening to attribute changes of deep data structures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-state-listening-to-incoming-and-existing-data-in-the-state" title="Initial state / Listening to incoming AND existing data in the state" class="md-nav__link">
+    Initial state / Listening to incoming AND existing data in the state
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../authentication/" title="Authentication" class="md-nav__link">
+      Authentication
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../push/" title="Push Notifications" class="md-nav__link">
+      Push Notifications
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../debugging/" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deployment/" title="Deployment" class="md-nav__link">
+      Deployment
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../scalability/" title="Scalability" class="md-nav__link">
+      Scalability
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Migrating
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Migrating
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.12/" title="0.12.x" class="md-nav__link">
+      0.12.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.11/" title="0.11.x" class="md-nav__link">
+      0.11.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.10/" title="0.10.x" class="md-nav__link">
+      0.10.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.9/" title="0.9.x" class="md-nav__link">
+      0.9.x
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fossildelta-is-going-to-be-deprecated-on-future-versions-of-colyseus-make-sure-to-use-the-schema-serializer" title="FossilDelta is going to be deprecated on future versions of Colyseus. Make sure to use the Schema Serializer." class="md-nav__link">
+    FossilDelta is going to be deprecated on future versions of Colyseus. Make sure to use the Schema Serializer.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-side" title="Server-side" class="md-nav__link">
+    Server-side
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raw-object-state" title="Raw Object State" class="md-nav__link">
+    Raw Object State
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-own-data-structures" title="Your Own Data Structures" class="md-nav__link">
+    Your Own Data Structures
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#non-synchronizable-properties-nosync" title="Non-synchronizable properties (@nosync)" class="md-nav__link">
+    Non-synchronizable properties (@nosync)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#white-listing-synchronizable-properties-thorugh-tojson" title="White-listing synchronizable properties thorugh toJSON()" class="md-nav__link">
+    White-listing synchronizable properties thorugh toJSON()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations" title="Limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoid-using-map-set" title="Avoid using Map, Set" class="md-nav__link">
+    Avoid using Map, Set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-mutating-arrays" title="Avoid mutating arrays" class="md-nav__link">
+    Avoid mutating arrays
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side" title="Client-side" class="md-nav__link">
+    Client-side
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-changes-in-a-particular-variable" title="Listening for changes in a particular variable." class="md-nav__link">
+    Listening for changes in a particular variable.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-to-map-data-structures" title="Listening to map data structures" class="md-nav__link">
+    Listening to map data structures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-to-attribute-changes-of-deep-data-structures" title="Listening to attribute changes of deep data structures" class="md-nav__link">
+    Listening to attribute changes of deep data structures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-state-listening-to-incoming-and-existing-data-in-the-state" title="Initial state / Listening to incoming AND existing data in the state" class="md-nav__link">
+    Initial state / Listening to incoming AND existing data in the state
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/colyseus/docs/edit/master/docs/state/fossil-delta.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="state-handling-fossil-delta"><a href="/state/overview">State Handling</a> » Fossil Delta<a class="headerlink" href="#state-handling-fossil-delta" title="Permanent link">&para;</a></h1>
+<h2 id="fossildelta-is-going-to-be-deprecated-on-future-versions-of-colyseus-make-sure-to-use-the-schema-serializer">FossilDelta is going to be deprecated on future versions of Colyseus. Make sure to use the <a href="/state/schema">Schema Serializer</a>.<a class="headerlink" href="#fossildelta-is-going-to-be-deprecated-on-future-versions-of-colyseus-make-sure-to-use-the-schema-serializer" title="Permanent link">&para;</a></h2>
+<p>The <code>FossilDeltaSerializer</code> is permissive about which structure you provide as the state. You may provide a raw object, or a class instance. All the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty#Description">enumerable properties</a> of the object provided are going to be serialized to the clients.</p>
+<ul>
+<li>Non-synchronizable properties should be non-enumerable (through <a href="#non-synchronizable-properties-nosync"><code>@nosync</code></a>)</li>
+<li>You may white-list synchronizable propertires through <a href="#white-listing-synchronizable-properties-thorugh-tojson"><code>toJSON()</code></a> method.</li>
+</ul>
+<h2 id="server-side">Server-side<a class="headerlink" href="#server-side" title="Permanent link">&para;</a></h2>
+<!-- !!! Tip
+    - For synchronization with the client-side, see [client-side state synchronization](/client/state/fossil-delta).
+    - See Colyseus' technical approach on [state synchronization](/state/fossil-delta). -->
+
+<h3 id="raw-object-state">Raw Object State<a class="headerlink" href="#raw-object-state" title="Permanent link">&para;</a></h3>
+<p>The simplest way to deal with the room state is using a raw JavaScript objects directly in the <code>Room</code> handler.</p>
+<p><strong>On the following example, you'll see:</strong></p>
+<ul>
+<li>Creating player upon client connection.</li>
+<li>Handling client-side actions and updating the state to move <code>x</code> position.</li>
+<li>Removing player upon client disconnection.</li>
+</ul>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-0-0_typescript-panel role=tab><label for=tab-group-0-0_typescript class=code-tab-label data-lang=typescript id=tab-group-0-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-0-0_typescript-panel aria-labelledby=tab-group-0-0_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=p>{</span> <span class=nx>Room</span><span class=p>,</span> <span class=nx>Client</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+
+<span class=kr>export</span> <span class=kr>class</span> <span class=nx>BattleRoom</span> <span class=kr>extends</span> <span class=nx>Room</span> <span class=p>{</span>
+
+  <span class=nx>onCreate</span> <span class=p>(</span><span class=nx>options</span>: <span class=kt>any</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>setState</span><span class=p>({</span>
+      <span class=nx>players</span><span class=o>:</span> <span class=p>{}</span>
+    <span class=p>});</span>
+  <span class=p>}</span>
+
+  <span class=nx>onJoin</span> <span class=p>(</span><span class=nx>client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>]</span> <span class=o>=</span> <span class=p>{</span>
+      <span class=nx>x</span>: <span class=kt>0</span><span class=p>,</span>
+      <span class=nx>y</span>: <span class=kt>0</span>
+    <span class=p>};</span>
+  <span class=p>}</span>
+
+  <span class=nx>onLeave</span> <span class=p>(</span><span class=nx>client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>delete</span> <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>];</span>
+  <span class=p>}</span>
+
+  <span class=nx>onMessage</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>data</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>data</span><span class=p>.</span><span class=nx>action</span> <span class=o>===</span> <span class=s2>&quot;left&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>].</span><span class=nx>x</span> <span class=o>-=</span> <span class=mi>1</span><span class=p>;</span>
+
+    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>data</span><span class=p>.</span><span class=nx>action</span> <span class=o>===</span> <span class=s2>&quot;right&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>].</span><span class=nx>x</span> <span class=o>+=</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></div><input name=tab-group-0 type=radio id=tab-group-0-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-0-1_typescript-panel role=tab><label for=tab-group-0-1_typescript class=code-tab-label data-lang=typescript id=tab-group-0-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-0-1_typescript-panel aria-labelledby=tab-group-0-1_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>const</span> <span class=nx>colyseus</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;colyseus&#39;</span><span class=p>)</span>
+
+<span class=kr>export</span> <span class=kr>class</span> <span class=nx>BattleRoom</span> <span class=kr>extends</span> <span class=nx>colyseus</span><span class=p>.</span><span class=nx>Room</span> <span class=p>{</span>
+
+  <span class=nx>onCreate</span> <span class=p>(</span><span class=nx>options</span>: <span class=kt>any</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>setState</span><span class=p>({</span>
+      <span class=nx>players</span><span class=o>:</span> <span class=p>{}</span>
+    <span class=p>});</span>
+  <span class=p>}</span>
+
+  <span class=nx>onJoin</span> <span class=p>(</span><span class=nx>client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>]</span> <span class=o>=</span> <span class=p>{</span>
+      <span class=nx>x</span>: <span class=kt>0</span><span class=p>,</span>
+      <span class=nx>y</span>: <span class=kt>0</span>
+    <span class=p>};</span>
+  <span class=p>}</span>
+
+  <span class=nx>onLeave</span> <span class=p>(</span><span class=nx>client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>delete</span> <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>];</span>
+  <span class=p>}</span>
+
+  <span class=nx>onMessage</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>data</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>data</span><span class=p>.</span><span class=nx>action</span> <span class=o>===</span> <span class=s2>&quot;left&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>].</span><span class=nx>x</span> <span class=o>-=</span> <span class=mi>1</span><span class=p>;</span>
+
+    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>data</span><span class=p>.</span><span class=nx>action</span> <span class=o>===</span> <span class=s2>&quot;right&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>].</span><span class=nx>x</span> <span class=o>+=</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></div></div>
+
+<h3 id="your-own-data-structures">Your Own Data Structures<a class="headerlink" href="#your-own-data-structures" title="Permanent link">&para;</a></h3>
+<p>Whilst it's possible to use raw data directly on <a href="/server/room/#setstate-object"><code>this.setState()</code></a>. The recommended way to handle your state is through your own data structures.</p>
+<p><strong>On the following (rewritten) example, you'll see:</strong></p>
+<ul>
+<li>A clean <code>BattleRoom</code> implementation, directly coupled to the state structure.</li>
+<li>A large data structure holding the entire room state (<code>BattleState</code>)<ul>
+<li>Methods manipulating smaller data structures</li>
+</ul>
+</li>
+<li>A small decoupled data structure representing a single entity (<code>Player</code>)</li>
+</ul>
+<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-1-0_typescript-panel role=tab><label for=tab-group-1-0_typescript class=code-tab-label data-lang=typescript id=tab-group-1-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-1-0_typescript-panel aria-labelledby=tab-group-1-0_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=p>{</span> <span class=nx>Room</span><span class=p>,</span> <span class=nx>Client</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+
+<span class=kr>class</span> <span class=nx>Player</span> <span class=p>{</span>
+  <span class=nx>x</span>: <span class=kt>number</span><span class=p>;</span>
+  <span class=nx>y</span>: <span class=kt>number</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=kr>class</span> <span class=nx>BattleState</span> <span class=p>{</span>
+  <span class=nx>players</span><span class=o>:</span> <span class=p>{[</span><span class=nx>id</span>: <span class=kt>string</span><span class=p>]</span><span class=o>:</span> <span class=nx>Player</span><span class=p>}</span> <span class=o>=</span> <span class=p>{};</span>
+
+  <span class=nx>addPlayer</span> <span class=p>(</span><span class=nx>client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>]</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Player</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=nx>removePlayer</span> <span class=p>(</span><span class=nx>client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>delete</span> <span class=k>this</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>];</span>
+  <span class=p>}</span>
+
+  <span class=nx>movePlayer</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>action</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>action</span> <span class=o>===</span> <span class=s2>&quot;left&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>this</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>].</span><span class=nx>x</span> <span class=o>-=</span> <span class=mi>1</span><span class=p>;</span>
+
+    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>action</span> <span class=o>===</span> <span class=s2>&quot;right&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>this</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>].</span><span class=nx>x</span> <span class=o>+=</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+
+<span class=kr>export</span> <span class=kr>class</span> <span class=nx>BattleRoom</span> <span class=kr>extends</span> <span class=nx>Room</span><span class=o>&lt;</span><span class=nx>BattleState</span><span class=o>&gt;</span> <span class=p>{</span>
+
+  <span class=nx>onCreate</span> <span class=p>(</span><span class=nx>options</span>: <span class=kt>any</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>setState</span><span class=p>(</span><span class=k>new</span> <span class=nx>BattleState</span><span class=p>());</span>
+  <span class=p>}</span>
+
+  <span class=nx>onJoin</span> <span class=p>(</span><span class=nx>client</span>: <span class=kt>Client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>addPlayer</span><span class=p>(</span><span class=nx>client</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=nx>onLeave</span> <span class=p>(</span><span class=nx>client</span>: <span class=kt>Client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>removePlayer</span><span class=p>(</span><span class=nx>client</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=nx>onMessage</span> <span class=p>(</span><span class=nx>client</span>: <span class=kt>Client</span><span class=p>,</span> <span class=nx>data</span>: <span class=kt>any</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>data</span><span class=p>.</span><span class=nx>action</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>movePlayer</span><span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>data</span><span class=p>.</span><span class=nx>action</span><span class=p>);</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></div><input name=tab-group-1 type=radio id=tab-group-1-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-1-1_typescript-panel role=tab><label for=tab-group-1-1_typescript class=code-tab-label data-lang=typescript id=tab-group-1-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-1-1_typescript-panel aria-labelledby=tab-group-1-1_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>const</span> <span class=nx>colyseus</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;colyseus&#39;</span><span class=p>);</span>
+
+<span class=kr>class</span> <span class=nx>Player</span> <span class=p>{</span>
+  <span class=kr>constructor</span> <span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>x</span> <span class=o>=</span> <span class=nx>x</span><span class=p>;</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>y</span> <span class=o>=</span> <span class=nx>y</span><span class=p>;</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+
+<span class=kr>class</span> <span class=nx>BattleState</span> <span class=p>{</span>
+  <span class=kr>constructor</span> <span class=p>()</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>players</span> <span class=o>=</span> <span class=p>{};</span>
+  <span class=p>}</span>
+
+  <span class=nx>addPlayer</span> <span class=p>(</span><span class=nx>client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>]</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Player</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=nx>removePlayer</span> <span class=p>(</span><span class=nx>client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>delete</span> <span class=k>this</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>];</span>
+  <span class=p>}</span>
+
+  <span class=nx>movePlayer</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>action</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>action</span> <span class=o>===</span> <span class=s2>&quot;left&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>this</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>].</span><span class=nx>x</span> <span class=o>-=</span> <span class=mi>1</span><span class=p>;</span>
+
+    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>action</span> <span class=o>===</span> <span class=s2>&quot;right&quot;</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>this</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span> <span class=p>].</span><span class=nx>x</span> <span class=o>+=</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+
+<span class=kr>module</span><span class=nx>.exports</span> <span class=o>=</span> <span class=kr>class</span> <span class=nx>BattleRoom</span> <span class=kr>extends</span> <span class=nx>colyseus</span><span class=p>.</span><span class=nx>Room</span> <span class=p>{</span>
+
+  <span class=nx>onCreate</span> <span class=p>(</span><span class=nx>options</span>: <span class=kt>any</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>setState</span><span class=p>(</span><span class=k>new</span> <span class=nx>BattleState</span><span class=p>());</span>
+  <span class=p>}</span>
+
+  <span class=nx>onJoin</span> <span class=p>(</span><span class=nx>client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>addPlayer</span><span class=p>(</span><span class=nx>client</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=nx>onLeave</span> <span class=p>(</span><span class=nx>client</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>removePlayer</span><span class=p>(</span><span class=nx>client</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=nx>onMessage</span> <span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>data</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=nx>data</span><span class=p>.</span><span class=nx>action</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>this</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>movePlayer</span><span class=p>(</span><span class=nx>client</span><span class=p>,</span> <span class=nx>data</span><span class=p>.</span><span class=nx>action</span><span class=p>);</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></div></div>
+
+<h4 id="non-synchronizable-properties-nosync">Non-synchronizable properties (<code>@nosync</code>)<a class="headerlink" href="#non-synchronizable-properties-nosync" title="Permanent link">&para;</a></h4>
+<p>To prevent private properties from leaking into your clients' state, you need to set those properties as <strong>non-enumerable</strong>. The decorator <code>@nosync</code> is a syntax sugar for this purpose.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-2-0_typescript-panel role=tab><label for=tab-group-2-0_typescript class=code-tab-label data-lang=typescript id=tab-group-2-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-2-0_typescript-panel aria-labelledby=tab-group-2-0_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=p>{</span> <span class=nx>nosync</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+
+<span class=kr>export</span> <span class=kr>class</span> <span class=nx>Player</span> <span class=p>{</span>
+  <span class=nx>x</span>: <span class=kt>number</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+  <span class=nx>y</span>: <span class=kt>number</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+
+  <span class=kd>@nosync</span>
+  <span class=nx>wontBeSynched</span>: <span class=kt>string</span> <span class=o>=</span> <span class=s2>&quot;This property won&#39;t be synched with clients&quot;</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div></div><input name=tab-group-2 type=radio id=tab-group-2-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-2-1_typescript-panel role=tab><label for=tab-group-2-1_typescript class=code-tab-label data-lang=typescript id=tab-group-2-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-2-1_typescript-panel aria-labelledby=tab-group-2-1_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>const</span> <span class=nx>colyseus</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;colyseus&#39;</span><span class=p>);</span>
+
+<span class=kr>module</span><span class=nx>.exports</span> <span class=o>=</span> <span class=kr>class</span> <span class=nx>Player</span> <span class=p>{</span>
+  <span class=kr>constructor</span> <span class=p>()</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>x</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>y</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>wontBeSynched</span> <span class=o>=</span> <span class=s2>&quot;This property won&#39;t be synched with clients&quot;</span><span class=p>;</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+
+<span class=nx>colyseus</span><span class=p>.</span><span class=nx>nosync</span><span class=p>(</span><span class=nx>Player</span><span class=p>.</span><span class=nx>prototype</span><span class=p>,</span> <span class=s2>&quot;wontBeSynched&quot;</span><span class=p>);</span>
+</code></pre></div></div></div>
+
+<h4 id="white-listing-synchronizable-properties-thorugh-tojson">White-listing synchronizable properties thorugh <code>toJSON()</code><a class="headerlink" href="#white-listing-synchronizable-properties-thorugh-tojson" title="Permanent link">&para;</a></h4>
+<p>In your data structures, you may implement a <code>toJSON()</code> method, to explicitly define how it should be serialized for the clients. This way, you don't need to use <a href="#non-synchronizable-properties-nosync"><code>nosync</code></a>, since you're white-listing the properties manually.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-3><input name=tab-group-3 type=radio id=tab-group-3-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-3-0_typescript-panel role=tab><label for=tab-group-3-0_typescript class=code-tab-label data-lang=typescript id=tab-group-3-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-3-0_typescript-panel aria-labelledby=tab-group-3-0_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>export</span> <span class=kr>class</span> <span class=nx>Player</span> <span class=p>{</span>
+  <span class=nx>x</span>: <span class=kt>number</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+  <span class=nx>y</span>: <span class=kt>number</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+  <span class=nx>complexObject</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>SomethingElse</span><span class=p>();</span>
+
+  <span class=nx>toJSON</span> <span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=p>{</span>
+      <span class=nx>x</span>: <span class=kt>this.x</span><span class=p>,</span>
+      <span class=nx>y</span>: <span class=kt>this.y</span><span class=p>,</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></div><input name=tab-group-3 type=radio id=tab-group-3-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-3-1_typescript-panel role=tab><label for=tab-group-3-1_typescript class=code-tab-label data-lang=typescript id=tab-group-3-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-3-1_typescript-panel aria-labelledby=tab-group-3-1_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>module</span><span class=nx>.exports</span> <span class=o>=</span> <span class=kr>class</span> <span class=nx>Player</span> <span class=p>{</span>
+  <span class=kr>constructor</span> <span class=p>(</span><span class=nx>x</span><span class=p>,</span> <span class=nx>y</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>x</span> <span class=o>=</span> <span class=nx>x</span><span class=p>;</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>y</span> <span class=o>=</span> <span class=nx>y</span><span class=p>;</span>
+    <span class=k>this</span><span class=p>.</span><span class=nx>complexObject</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>SomethingElse</span><span class=p>();</span>
+  <span class=p>}</span>
+
+  <span class=nx>toJSON</span> <span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=p>{</span>
+      <span class=nx>x</span>: <span class=kt>this.x</span><span class=p>,</span>
+      <span class=nx>y</span>: <span class=kt>this.y</span><span class=p>,</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></div></div>
+
+<h3 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h3>
+<h4 id="avoid-using-map-set">Avoid using <code>Map</code>, <code>Set</code><a class="headerlink" href="#avoid-using-map-set" title="Permanent link">&para;</a></h4>
+<p>Avoid using <code>Map</code> and <code>Set</code> for public, synchronizeable, properties.</p>
+<p>Unfortunately, the JavaScript built-in types <code>Map</code> and <code>Set</code> aren't serializeable. That's because their internal structure is not exposed as enumerable properties:</p>
+<p> <div class=codehilite><pre><span></span><code><span class=kd>var</span> <span class=nx>myMap</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Map</span><span class=p>([[</span><span class=s2>&quot;k1&quot;</span><span class=p>,</span> <span class=s2>&quot;v1&quot;</span><span class=p>],</span> <span class=p>[</span><span class=s2>&quot;k2&quot;</span><span class=p>,</span> <span class=s2>&quot;v2&quot;</span><span class=p>]]);</span>
+<span class=c1>// =&gt; Map(2) {&quot;key&quot; =&gt; &quot;value&quot;, &quot;key2&quot; =&gt; &quot;value2&quot;}</span>
+<span class=nx>JSON</span><span class=p>.</span><span class=nx>stringify</span><span class=p>(</span><span class=nx>myMap</span><span class=p>);</span>
+<span class=c1>// =&gt; &quot;{}&quot;</span>
+</code></pre></div></p>
+<p>You're encouraged to use these structures as private, non-synchronizable variables, though. See <a href="#non-synchronizable-properties-nosync"><code>@nosync</code></a>.</p>
+<h4 id="avoid-mutating-arrays">Avoid mutating arrays<a class="headerlink" href="#avoid-mutating-arrays" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>push</code>ing new entries is OK - the clients will receive a single <code>"add"</code> operation.</li>
+<li><code>pop</code>ing the last entry is OK - the clients will receive a single <code>"remove"</code> operation.</li>
+</ul>
+<p>Removing or inserting entries in-between will generate one <code>"replace"</code> operation for each entry that had the index changed. Be careful to handle these changes in the client-side properly.</p>
+<h2 id="client-side">Client-side<a class="headerlink" href="#client-side" title="Permanent link">&para;</a></h2>
+<h3 id="listening-for-changes-in-a-particular-variable">Listening for changes in a particular variable.<a class="headerlink" href="#listening-for-changes-in-a-particular-variable" title="Permanent link">&para;</a></h3>
+<p>The example below describes how to listen for a particular variable. You may use the full path of a known variable, such as <code>"a/really/deep/path"</code>, <code>"world/fog"</code>, etc.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-5><input name=tab-group-5 type=radio id=tab-group-5-0_javascript checked=checked class=code-tab data-lang=javascript aria-controls=tab-group-5-0_javascript-panel role=tab><label for=tab-group-5-0_javascript class=code-tab-label data-lang=javascript id=tab-group-5-0_javascript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=javascript id=tab-group-5-0_javascript-panel aria-labelledby=tab-group-5-0_javascript-label><div class=codehilite><pre><span></span><code><span class=nx>room</span><span class=p>.</span><span class=nx>listen</span><span class=p>(</span><span class=s2>&quot;currentTurn&quot;</span><span class=p>,</span> <span class=p>(</span><span class=nx>change</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;current turn is now&quot;</span><span class=p>,</span> <span class=nx>change</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+<span class=p>})</span>
+</code></pre></div></div><input name=tab-group-5 type=radio id=tab-group-5-1_csharp class=code-tab data-lang=csharp aria-controls=tab-group-5-1_csharp-panel role=tab><label for=tab-group-5-1_csharp class=code-tab-label data-lang=csharp id=tab-group-5-1_csharp-label>C#</label><div class=code-tabpanel role=tabpanel data-lang=csharp id=tab-group-5-1_csharp-panel aria-labelledby=tab-group-5-1_csharp-label><div class=codehilite><pre><span></span><code><span class=k>using</span> <span class=nn>Colyseus</span><span class=p>;</span>
+<span class=c1>// ...</span>
+
+<span class=n>room</span><span class=p>.</span><span class=n>Listen</span><span class=p>(</span><span class=s>&quot;currentTurn&quot;</span><span class=p>,</span> <span class=n>OnCurrentTurnChange</span><span class=p>);</span>
+
+<span class=k>void</span> <span class=nf>OnCurrentTurnChange</span> <span class=p>(</span><span class=n>DataChange</span> <span class=n>change</span><span class=p>)</span>
+<span class=p>{</span>
+  <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span> <span class=p>(</span><span class=s>&quot;current turn is now:&quot;</span><span class=p>);</span>
+  <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=k>value</span><span class=p>);</span>
+<span class=p>});</span>
+</code></pre></div></div><input name=tab-group-5 type=radio id=tab-group-5-2_lua class=code-tab data-lang=lua aria-controls=tab-group-5-2_lua-panel role=tab><label for=tab-group-5-2_lua class=code-tab-label data-lang=lua id=tab-group-5-2_lua-label>lua</label><div class=code-tabpanel role=tabpanel data-lang=lua id=tab-group-5-2_lua-panel aria-labelledby=tab-group-5-2_lua-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>:</span><span class=n>listen</span><span class=p>(</span><span class=s2>&quot;currentTurn&quot;</span><span class=p>,</span> <span class=kr>function</span><span class=p>(</span><span class=n>change</span><span class=p>)</span>
+  <span class=nb>print</span><span class=p>(</span><span class=s2>&quot;current turn is now: &quot;</span> <span class=o>..</span> <span class=n>change</span><span class=p>.</span><span class=n>value</span><span class=p>);</span>
+<span class=kr>end</span><span class=p>)</span>
+</code></pre></div></div><input name=tab-group-5 type=radio id=tab-group-5-3_haxe class=code-tab data-lang=haxe aria-controls=tab-group-5-3_haxe-panel role=tab><label for=tab-group-5-3_haxe class=code-tab-label data-lang=haxe id=tab-group-5-3_haxe-label>Haxe</label><div class=code-tabpanel role=tabpanel data-lang=haxe id=tab-group-5-3_haxe-panel aria-labelledby=tab-group-5-3_haxe-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>listen</span><span class=p>(</span><span class=s2>&quot;currentTurn&quot;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=n>change</span><span class=p>)</span> <span class=p>{</span>
+  <span class=n>trace</span><span class=p>(</span><span class=s2>&quot;current turn is now: &quot;</span> <span class=o>+</span> <span class=n>change</span><span class=p>.</span><span class=n>value</span><span class=p>);</span>
+<span class=p>});</span>
+</code></pre></div></div></div>
+
+<h3 id="listening-to-map-data-structures">Listening to map data structures<a class="headerlink" href="#listening-to-map-data-structures" title="Permanent link">&para;</a></h3>
+<p>The example below describes how to catch addition and removals of a map. The callback will be called multiple times, for each entry added or removed from a map of players.</p>
+<div class="admonition tip">
+<p class="admonition-title">This example do not listen for changes <strong>inside</strong> each player instance.</p>
+<p>To listen for changes <strong>inside</strong> each player instance, you should listen for <a href="#listening-to-attribute-changes-of-deep-data-structures"><code>"players/:id/:attribute"</code> path as well</a>.</p>
+</div>
+<div class=md-fenced-code-tabs id=tab-tab-group-6><input name=tab-group-6 type=radio id=tab-group-6-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-6-0_typescript-panel role=tab><label for=tab-group-6-0_typescript class=code-tab-label data-lang=typescript id=tab-group-6-0_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-6-0_typescript-panel aria-labelledby=tab-group-6-0_typescript-label><div class=codehilite><pre><span></span><code><span class=nx>room</span><span class=p>.</span><span class=nx>listen</span><span class=p>(</span><span class=s2>&quot;players/:id&quot;</span><span class=p>,</span> <span class=p>(</span><span class=nx>change</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=p>{</span>
+  <span class=k>if</span> <span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>operation</span> <span class=o>===</span> <span class=s2>&quot;add&quot;</span><span class=p>)</span> <span class=p>{</span>
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;new player added to the state&quot;</span><span class=p>);</span>
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;player id:&quot;</span><span class=p>,</span> <span class=nx>change</span><span class=p>.</span><span class=nx>path</span><span class=p>.</span><span class=nx>id</span><span class=p>);</span>
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;player data:&quot;</span><span class=p>,</span> <span class=nx>change</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+
+  <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>operation</span> <span class=o>===</span> <span class=s2>&quot;remove&quot;</span><span class=p>)</span> <span class=p>{</span>
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;player has been removed from the state&quot;</span><span class=p>);</span>
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;player id:&quot;</span><span class=p>,</span> <span class=nx>change</span><span class=p>.</span><span class=nx>path</span><span class=p>.</span><span class=nx>id</span><span class=p>);</span>
+  <span class=p>}</span>
+<span class=p>});</span>
+</code></pre></div></div><input name=tab-group-6 type=radio id=tab-group-6-1_csharp class=code-tab data-lang=csharp aria-controls=tab-group-6-1_csharp-panel role=tab><label for=tab-group-6-1_csharp class=code-tab-label data-lang=csharp id=tab-group-6-1_csharp-label>C#</label><div class=code-tabpanel role=tabpanel data-lang=csharp id=tab-group-6-1_csharp-panel aria-labelledby=tab-group-6-1_csharp-label><div class=codehilite><pre><span></span><code><span class=k>using</span> <span class=nn>Colyseus</span><span class=p>;</span>
+<span class=c1>// ...</span>
+
+<span class=n>room</span><span class=p>.</span><span class=n>Listen</span><span class=p>(</span><span class=s>&quot;players/:id&quot;</span><span class=p>,</span> <span class=n>OnPlayerChange</span><span class=p>);</span>
+
+<span class=k>void</span> <span class=nf>OnPlayerChange</span> <span class=p>(</span><span class=n>DataChange</span> <span class=n>change</span><span class=p>)</span>
+<span class=p>{</span>
+  <span class=k>if</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>operation</span> <span class=p>==</span> <span class=s>&quot;add&quot;</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span> <span class=p>(</span><span class=s>&quot;new player added to the state&quot;</span><span class=p>);</span>
+    <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>[</span><span class=s>&quot;id&quot;</span><span class=p>]);</span>
+    <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=k>value</span><span class=p>);</span>
+
+  <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>operation</span> <span class=p>==</span> <span class=s>&quot;remove&quot;</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span> <span class=p>(</span><span class=s>&quot;player has been removed from the state&quot;</span><span class=p>);</span>
+    <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>[</span><span class=s>&quot;id&quot;</span><span class=p>]);</span>
+  <span class=p>}</span>
+<span class=p>});</span>
+</code></pre></div></div><input name=tab-group-6 type=radio id=tab-group-6-2_lua class=code-tab data-lang=lua aria-controls=tab-group-6-2_lua-panel role=tab><label for=tab-group-6-2_lua class=code-tab-label data-lang=lua id=tab-group-6-2_lua-label>lua</label><div class=code-tabpanel role=tabpanel data-lang=lua id=tab-group-6-2_lua-panel aria-labelledby=tab-group-6-2_lua-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>:</span><span class=n>listen</span><span class=p>(</span><span class=s2>&quot;players/:id&quot;</span><span class=p>,</span> <span class=kr>function</span><span class=p>(</span><span class=n>change</span><span class=p>)</span>
+  <span class=kr>if</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>operation</span> <span class=o>==</span> <span class=s2>&quot;add&quot;</span><span class=p>)</span> <span class=kr>then</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s2>&quot;new player added to the state&quot;</span><span class=p>)</span>
+    <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>[</span><span class=s2>&quot;id&quot;</span><span class=p>])</span>
+    <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>value</span><span class=p>)</span>
+
+  <span class=kr>elseif</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>operation</span> <span class=o>==</span> <span class=s2>&quot;remove&quot;</span><span class=p>)</span> <span class=kr>then</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s2>&quot;player has been removed from the state&quot;</span><span class=p>)</span>
+    <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>[</span><span class=s2>&quot;id&quot;</span><span class=p>])</span>
+  <span class=kr>end</span>
+<span class=kr>end</span><span class=p>)</span>
+</code></pre></div></div><input name=tab-group-6 type=radio id=tab-group-6-3_haxe class=code-tab data-lang=haxe aria-controls=tab-group-6-3_haxe-panel role=tab><label for=tab-group-6-3_haxe class=code-tab-label data-lang=haxe id=tab-group-6-3_haxe-label>Haxe</label><div class=code-tabpanel role=tabpanel data-lang=haxe id=tab-group-6-3_haxe-panel aria-labelledby=tab-group-6-3_haxe-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>listen</span><span class=p>(</span><span class=s2>&quot;players/:id&quot;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=n>change</span><span class=p>)</span> <span class=p>{</span>
+  <span class=k>if</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>operation</span> <span class=o>==</span><span class=err>=</span> <span class=s2>&quot;add&quot;</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>trace</span><span class=p>(</span><span class=s2>&quot;new player added to the state&quot;</span><span class=p>);</span>
+    <span class=n>trace</span><span class=p>(</span><span class=s2>&quot;player id:&quot;</span> <span class=o>+</span> <span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>.</span><span class=n>id</span><span class=p>);</span>
+    <span class=n>trace</span><span class=p>(</span><span class=s2>&quot;player data:&quot;</span> <span class=o>+</span> <span class=n>Std</span><span class=p>.</span><span class=n>string</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>value</span><span class=p>));</span>
+
+  <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>operation</span> <span class=o>==</span><span class=err>=</span> <span class=s2>&quot;remove&quot;</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>trace</span><span class=p>(</span><span class=s2>&quot;player has been removed from the state&quot;</span><span class=p>);</span>
+    <span class=n>trace</span><span class=p>(</span><span class=s2>&quot;player id:&quot;</span> <span class=o>+</span> <span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>.</span><span class=n>id</span><span class=p>);</span>
+  <span class=p>}</span>
+<span class=p>});</span>
+</code></pre></div></div></div>
+
+<h3 id="listening-to-attribute-changes-of-deep-data-structures">Listening to attribute changes of deep data structures<a class="headerlink" href="#listening-to-attribute-changes-of-deep-data-structures" title="Permanent link">&para;</a></h3>
+<p>The example below describes how to catch each attribute change from inside a map of players. The callback will be called multiple times, for each attribute that has changed.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-7><input name=tab-group-7 type=radio id=tab-group-7-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-7-0_typescript-panel role=tab><label for=tab-group-7-0_typescript class=code-tab-label data-lang=typescript id=tab-group-7-0_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-7-0_typescript-panel aria-labelledby=tab-group-7-0_typescript-label><div class=codehilite><pre><span></span><code><span class=nx>room</span><span class=p>.</span><span class=nx>listen</span><span class=p>(</span><span class=s2>&quot;players/:id/:attribute&quot;</span><span class=p>,</span> <span class=p>(</span><span class=nx>change</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=p>{</span>
+  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>operation</span><span class=p>);</span> <span class=c1>// =&gt; &quot;add&quot; | &quot;remove&quot; | &quot;replace&quot;</span>
+  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>path</span><span class=p>.</span><span class=nx>attribute</span><span class=p>,</span> <span class=s2>&quot;has been changed&quot;</span><span class=p>);</span>
+  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>path</span><span class=p>.</span><span class=nx>id</span><span class=p>);</span>
+  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+<span class=p>});</span>
+</code></pre></div></div><input name=tab-group-7 type=radio id=tab-group-7-1_csharp class=code-tab data-lang=csharp aria-controls=tab-group-7-1_csharp-panel role=tab><label for=tab-group-7-1_csharp class=code-tab-label data-lang=csharp id=tab-group-7-1_csharp-label>C#</label><div class=code-tabpanel role=tabpanel data-lang=csharp id=tab-group-7-1_csharp-panel aria-labelledby=tab-group-7-1_csharp-label><div class=codehilite><pre><span></span><code><span class=k>using</span> <span class=nn>Colyseus</span><span class=p>;</span>
+<span class=c1>// ...</span>
+
+<span class=n>room</span><span class=p>.</span><span class=n>Listen</span><span class=p>(</span><span class=s>&quot;players/:id/:attribute&quot;</span><span class=p>,</span> <span class=n>OnPlayerAttributeChange</span><span class=p>);</span>
+
+<span class=k>void</span> <span class=nf>OnPlayerAttributeChange</span> <span class=p>(</span><span class=n>DataChange</span> <span class=n>change</span><span class=p>)</span>
+<span class=p>{</span>
+  <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>operation</span><span class=p>);</span> <span class=c1>// =&gt; &quot;add&quot; | &quot;remove&quot; | &quot;replace&quot;</span>
+  <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>[</span><span class=s>&quot;attribute&quot;</span><span class=p>]</span> <span class=p>+</span> <span class=s>&quot;has been changed&quot;</span><span class=p>);</span>
+  <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>[</span><span class=s>&quot;id&quot;</span><span class=p>]);</span>
+  <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span> <span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=k>value</span><span class=p>);</span>
+<span class=p>});</span>
+</code></pre></div></div><input name=tab-group-7 type=radio id=tab-group-7-2_lua class=code-tab data-lang=lua aria-controls=tab-group-7-2_lua-panel role=tab><label for=tab-group-7-2_lua class=code-tab-label data-lang=lua id=tab-group-7-2_lua-label>lua</label><div class=code-tabpanel role=tabpanel data-lang=lua id=tab-group-7-2_lua-panel aria-labelledby=tab-group-7-2_lua-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>:</span><span class=n>listen</span><span class=p>(</span><span class=s2>&quot;players/:id/:attribute&quot;</span><span class=p>,</span> <span class=kr>function</span><span class=p>()</span>
+  <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>operation</span><span class=p>)</span> <span class=o>//</span> <span class=o>=&gt;</span> <span class=s2>&quot;add&quot;</span> <span class=o>|</span> <span class=s2>&quot;remove&quot;</span> <span class=o>|</span> <span class=s2>&quot;replace&quot;</span>
+  <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>[</span><span class=s2>&quot;attribute&quot;</span><span class=p>]</span> <span class=o>+</span> <span class=s2>&quot;has been changed&quot;</span><span class=p>)</span>
+  <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>[</span><span class=s2>&quot;id&quot;</span><span class=p>])</span>
+  <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>value</span><span class=p>)</span>
+<span class=kr>end</span><span class=p>)</span>
+</code></pre></div></div><input name=tab-group-7 type=radio id=tab-group-7-3_haxe class=code-tab data-lang=haxe aria-controls=tab-group-7-3_haxe-panel role=tab><label for=tab-group-7-3_haxe class=code-tab-label data-lang=haxe id=tab-group-7-3_haxe-label>Haxe</label><div class=code-tabpanel role=tabpanel data-lang=haxe id=tab-group-7-3_haxe-panel aria-labelledby=tab-group-7-3_haxe-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>listen</span><span class=p>(</span><span class=s2>&quot;players/:id/:attribute&quot;</span><span class=p>,</span> <span class=kd>function</span><span class=p>(</span><span class=n>change</span><span class=p>)</span> <span class=p>{</span>
+  <span class=n>trace</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>operation</span><span class=p>);</span> <span class=c1>// =&gt; &quot;add&quot; | &quot;remove&quot; | &quot;replace&quot;</span>
+  <span class=n>trace</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>.</span><span class=n>attribute</span> <span class=o>+</span> <span class=s2>&quot; has been changed&quot;</span><span class=p>);</span>
+  <span class=n>trace</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>path</span><span class=p>.</span><span class=n>id</span><span class=p>);</span>
+  <span class=n>trace</span><span class=p>(</span><span class=n>Std</span><span class=p>.</span><span class=n>string</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>value</span><span class=p>));</span>
+<span class=p>});</span>
+</code></pre></div></div></div>
+
+<h3 id="initial-state-listening-to-incoming-and-existing-data-in-the-state">Initial state / Listening to incoming AND existing data in the state<a class="headerlink" href="#initial-state-listening-to-incoming-and-existing-data-in-the-state" title="Permanent link">&para;</a></h3>
+<p>The callbacks will be triggered for each incoming <strong>change</strong> in the state after the moment of registration. To listen also for existing data on the state at the moment you register the callback, make sure to pass <code>true</code> on the <code>immediate</code> argument.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-8><input name=tab-group-8 type=radio id=tab-group-8-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-8-0_typescript-panel role=tab><label for=tab-group-8-0_typescript class=code-tab-label data-lang=typescript id=tab-group-8-0_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-8-0_typescript-panel aria-labelledby=tab-group-8-0_typescript-label><div class=codehilite><pre><span></span><code><span class=nx>room</span><span class=p>.</span><span class=nx>listen</span><span class=p>(</span><span class=s2>&quot;players/:id&quot;</span><span class=p>,</span> <span class=p>(</span><span class=nx>change</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=p>{</span>
+  <span class=c1>// ...</span>
+<span class=p>},</span> <span class=kc>true</span><span class=p>);</span> <span class=c1>// immediate</span>
+</code></pre></div></div><input name=tab-group-8 type=radio id=tab-group-8-1_csharp class=code-tab data-lang=csharp aria-controls=tab-group-8-1_csharp-panel role=tab><label for=tab-group-8-1_csharp class=code-tab-label data-lang=csharp id=tab-group-8-1_csharp-label>C#</label><div class=code-tabpanel role=tabpanel data-lang=csharp id=tab-group-8-1_csharp-panel aria-labelledby=tab-group-8-1_csharp-label><div class=codehilite><pre><span></span><code><span class=k>using</span> <span class=nn>Colyseus</span><span class=p>;</span>
+<span class=c1>// ...</span>
+
+<span class=n>room</span><span class=p>.</span><span class=n>Listen</span><span class=p>(</span><span class=s>&quot;players/:id&quot;</span><span class=p>,</span> <span class=n>OnPlayerChange</span><span class=p>,</span> <span class=k>true</span><span class=p>);</span> <span class=c1>// immediate</span>
+
+<span class=k>void</span> <span class=nf>OnPlayerChange</span> <span class=p>(</span><span class=n>DataChange</span> <span class=n>change</span><span class=p>)</span>
+<span class=p>{</span>
+  <span class=c1>// ...</span>
+<span class=p>});</span>
+</code></pre></div></div><input name=tab-group-8 type=radio id=tab-group-8-2_lua class=code-tab data-lang=lua aria-controls=tab-group-8-2_lua-panel role=tab><label for=tab-group-8-2_lua class=code-tab-label data-lang=lua id=tab-group-8-2_lua-label>lua</label><div class=code-tabpanel role=tabpanel data-lang=lua id=tab-group-8-2_lua-panel aria-labelledby=tab-group-8-2_lua-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>:</span><span class=n>listen</span><span class=p>(</span><span class=s2>&quot;players/:id&quot;</span><span class=p>,</span> <span class=kr>function</span><span class=p>(</span><span class=n>change</span><span class=p>)</span>
+  <span class=c1>-- ...</span>
+<span class=kr>end</span><span class=p>,</span> <span class=kc>true</span><span class=p>)</span> <span class=c1>-- immediate</span>
+</code></pre></div></div><input name=tab-group-8 type=radio id=tab-group-8-3_haxe class=code-tab data-lang=haxe aria-controls=tab-group-8-3_haxe-panel role=tab><label for=tab-group-8-3_haxe class=code-tab-label data-lang=haxe id=tab-group-8-3_haxe-label>Haxe</label><div class=code-tabpanel role=tabpanel data-lang=haxe id=tab-group-8-3_haxe-panel aria-labelledby=tab-group-8-3_haxe-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>listen</span><span class=p>(</span><span class=s2>&quot;players/:id&quot;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=n>change</span><span class=p>)</span> <span class=p>{</span>
+  <span class=c1>// ...</span>
+<span class=p>},</span> <span class=kc>true</span><span class=p>);</span> <span class=c1>// immediate</span>
+</code></pre></div></div></div>
+
+<!-- ### Using wildcards
+
+You may use a wildcard (a path segment starting with `:`) in the `listen` method for attributes of unknown name. The matched name will be available at `change.path`.
+
+**Examples**
+
+- Wildcard for a map of entities: (`"entities/:id/:attribute"`)
+    - The `:id` of the entity will be available at `change.path.id`
+    - The `:attribute` (any attribute change, such as `x`, `y`, etc) of the entity will be available at `change.path.attribute` -->
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../schema/" title="Schema" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Schema
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../authentication/" title="Authentication" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Authentication
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Endel Dreyer
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://www.patreon.com/endel" class="md-footer-social__link fa fa-money"></a>
+    
+      <a href="https://discuss.colyseus.io" class="md-footer-social__link fa fa-comments"></a>
+    
+      <a href="http://colyseus.io" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/colyseus" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/colyseus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/game-std-io/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b41f3d20.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../javascripts/main.js"></script>
+      
+        <script src="../../javascripts/ads.js"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1699 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation for Colyseus Multiplayer Game Server for Node.js">
+      
+      
+        <link rel="canonical" href="https://colyseus.io/state/schema/">
+      
+      
+        <meta name="author" content="Endel Dreyer">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+    
+    
+      
+        <title>Schema - Colyseus 0.12.x</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.8c900955.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/code-tabs.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ads.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#state-handling-schema" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://colyseus.io/" title="Colyseus 0.12.x" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/logo-white.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Colyseus 0.12.x
+              </span>
+              <span class="md-header-nav__topic">
+                Schema
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/colyseus/colyseus/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      colyseus/colyseus
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://colyseus.io/" title="Colyseus 0.12.x" class="md-nav__button md-logo">
+      
+        <img src="../../images/logo-white.png" width="48" height="48">
+      
+    </a>
+    Colyseus 0.12.x
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/colyseus/colyseus/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      colyseus/colyseus
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      入门
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        入门
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/server/" title="服务器段" class="md-nav__link">
+      服务器段
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/javascript-client/" title="JavaScript 客户端" class="md-nav__link">
+      JavaScript 客户端
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/unity3d-client/" title="Unity3d 客户端" class="md-nav__link">
+      Unity3d 客户端
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      如何使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        如何使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/password-protect-room/" title="用密码保护房间" class="md-nav__link">
+      用密码保护房间
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/deny-player-join-a-room/" title="拒绝玩家加入房间" class="md-nav__link">
+      拒绝玩家加入房间
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to/rate-limit/" title="限速" class="md-nav__link">
+      限速
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      服务器 API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        服务器 API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/api/" title="Server" class="md-nav__link">
+      Server
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/room/" title="Room" class="md-nav__link">
+      Room
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/client/" title="Client" class="md-nav__link">
+      Client
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/timing-events/" title="Timing events" class="md-nav__link">
+      Timing events
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/matchmaker/" title="Match-maker API" class="md-nav__link">
+      Match-maker API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/authentication/" title="Authentication API" class="md-nav__link">
+      Authentication API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/presence/" title="Presence" class="md-nav__link">
+      Presence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/graceful-shutdown/" title="Graceful shutdown" class="md-nav__link">
+      Graceful shutdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../server/state-serialization/" title="Custom State Serialization" class="md-nav__link">
+      Custom State Serialization
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      客户端 API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        客户端 API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client/client/" title="Client" class="md-nav__link">
+      Client
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client/room/" title="Room" class="md-nav__link">
+      Room
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      状态处理
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        状态处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Schema
+      </label>
+    
+    <a href="./" title="Schema" class="md-nav__link md-nav__link--active">
+      Schema
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#server-side" title="Server-side" class="md-nav__link">
+    Server-side
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-child-data-type" title="Custom child data type" class="md-nav__link">
+    Custom child data type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-of-custom-data-type" title="Array of custom data type" class="md-nav__link">
+    Array of custom data type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-of-custom-data-type" title="Map of custom data type" class="md-nav__link">
+    Map of custom data type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#looping-through-the-items-of-a-mapschema" title="Looping through the items of a MapSchema" class="md-nav__link">
+    Looping through the items of a MapSchema
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experimental-filtering-out-fields-for-specific-clients" title="Experimental: Filtering out fields for specific clients" class="md-nav__link">
+    Experimental: Filtering out fields for specific clients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primitive-types" title="Primitive types" class="md-nav__link">
+    Primitive types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backwardsforwards-compability" title="Backwards/forwards compability" class="md-nav__link">
+    Backwards/forwards compability
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-and-best-practices" title="Limitations and best practices" class="md-nav__link">
+    Limitations and best practices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side" title="Client-side" class="md-nav__link">
+    Client-side
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#callbacks" title="Callbacks" class="md-nav__link">
+    Callbacks
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onchange-changes-datachange" title="onChange (changes: DataChange[])" class="md-nav__link">
+    onChange (changes: DataChange[])
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onadd-instance-key" title="onAdd (instance, key)" class="md-nav__link">
+    onAdd (instance, key)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onremove-instance-key" title="onRemove (instance, key)" class="md-nav__link">
+    onRemove (instance, key)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onchange-instance-key" title="onChange (instance, key)" class="md-nav__link">
+    onChange (instance, key)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side-schema-generation" title="Client-side schema generation" class="md-nav__link">
+    Client-side schema generation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c-unity3d" title="C# / Unity3d" class="md-nav__link">
+    C# / Unity3d
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fossil-delta/" title="Fossil Delta (deprecated)" class="md-nav__link">
+      Fossil Delta (deprecated)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../authentication/" title="Authentication" class="md-nav__link">
+      Authentication
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../push/" title="Push Notifications" class="md-nav__link">
+      Push Notifications
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../debugging/" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deployment/" title="Deployment" class="md-nav__link">
+      Deployment
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../scalability/" title="Scalability" class="md-nav__link">
+      Scalability
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Migrating
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Migrating
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.12/" title="0.12.x" class="md-nav__link">
+      0.12.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.11/" title="0.11.x" class="md-nav__link">
+      0.11.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.10/" title="0.10.x" class="md-nav__link">
+      0.10.x
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../migrating/0.9/" title="0.9.x" class="md-nav__link">
+      0.9.x
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#server-side" title="Server-side" class="md-nav__link">
+    Server-side
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-child-data-type" title="Custom child data type" class="md-nav__link">
+    Custom child data type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-of-custom-data-type" title="Array of custom data type" class="md-nav__link">
+    Array of custom data type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-of-custom-data-type" title="Map of custom data type" class="md-nav__link">
+    Map of custom data type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#looping-through-the-items-of-a-mapschema" title="Looping through the items of a MapSchema" class="md-nav__link">
+    Looping through the items of a MapSchema
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experimental-filtering-out-fields-for-specific-clients" title="Experimental: Filtering out fields for specific clients" class="md-nav__link">
+    Experimental: Filtering out fields for specific clients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primitive-types" title="Primitive types" class="md-nav__link">
+    Primitive types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backwardsforwards-compability" title="Backwards/forwards compability" class="md-nav__link">
+    Backwards/forwards compability
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-and-best-practices" title="Limitations and best practices" class="md-nav__link">
+    Limitations and best practices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side" title="Client-side" class="md-nav__link">
+    Client-side
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#callbacks" title="Callbacks" class="md-nav__link">
+    Callbacks
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onchange-changes-datachange" title="onChange (changes: DataChange[])" class="md-nav__link">
+    onChange (changes: DataChange[])
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onadd-instance-key" title="onAdd (instance, key)" class="md-nav__link">
+    onAdd (instance, key)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onremove-instance-key" title="onRemove (instance, key)" class="md-nav__link">
+    onRemove (instance, key)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onchange-instance-key" title="onChange (instance, key)" class="md-nav__link">
+    onChange (instance, key)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side-schema-generation" title="Client-side schema generation" class="md-nav__link">
+    Client-side schema generation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c-unity3d" title="C# / Unity3d" class="md-nav__link">
+    C# / Unity3d
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/colyseus/docs/edit/master/docs/state/schema.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="state-handling-schema"><a href="/state/overview">State Handling</a> » Schema<a class="headerlink" href="#state-handling-schema" title="Permanent link">&para;</a></h1>
+<p>The <code>SchemaSerializer</code> has been introduced since Colyseus 0.10, and it's the default serialization method.</p>
+<p>The <code>Schema</code> strutures are meant to be used <strong>only for the room's state</strong> (synchronizeable data). You do <strong>not</strong> need to use <code>Schema</code> and its other structures for data that's part of your algorithms that aren't synchronizeable.</p>
+<h2 id="server-side">Server-side<a class="headerlink" href="#server-side" title="Permanent link">&para;</a></h2>
+<p>To use the <code>SchemaSerializer</code>, you must:</p>
+<ul>
+<li>Have a state class extending the <code>Schema</code> class</li>
+<li>Annotate all your synchonizable properties with the <code>@type()</code> decorator</li>
+<li>Instantiate the state for your room (<code>this.setState(new MyState())</code>)</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Are you not using TypeScript?</p>
+<p>Decorators <a href="https://github.com/tc39/proposal-decorators">are not part of ECMAScript yet</a>, so the <code>type</code> syntax on plain JavaScript is still a bit odd to use, which you can see in the "JavaScript" tab for each snippet.</p>
+</div>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-0-0_typescript-panel role=tab><label for=tab-group-0-0_typescript class=code-tab-label data-lang=typescript id=tab-group-0-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-0-0_typescript-panel aria-labelledby=tab-group-0-0_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=p>{</span> <span class=nx>Schema</span><span class=p>,</span> <span class=nx>type</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;@colyseus/schema&quot;</span><span class=p>;</span>
+
+<span class=kr>class</span> <span class=nx>MyState</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+    <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;string&quot;</span><span class=p>)</span>
+    <span class=nx>currentTurn</span>: <span class=kt>string</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div></div><input name=tab-group-0 type=radio id=tab-group-0-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-0-1_typescript-panel role=tab><label for=tab-group-0-1_typescript class=code-tab-label data-lang=typescript id=tab-group-0-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-0-1_typescript-panel aria-labelledby=tab-group-0-1_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>const</span> <span class=nx>schema</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;@colyseus/schema&#39;</span><span class=p>);</span>
+<span class=kr>const</span> <span class=nx>Schema</span> <span class=o>=</span> <span class=nx>schema</span><span class=p>.</span><span class=nx>Schema</span><span class=p>;</span>
+
+<span class=kr>class</span> <span class=nx>MyState</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+<span class=p>}</span>
+<span class=nx>schema</span><span class=p>.</span><span class=nx>defineTypes</span><span class=p>(</span><span class=nx>MyState</span><span class=p>,</span> <span class=p>{</span>
+  <span class=nx>currentTurn</span><span class=o>:</span> <span class=s2>&quot;string&quot;</span>
+<span class=p>});</span>
+</code></pre></div></div></div>
+
+<h3 id="custom-child-data-type">Custom child data type<a class="headerlink" href="#custom-child-data-type" title="Permanent link">&para;</a></h3>
+<p>You may define more custom data types inside your "root" state definition, as a direct reference, map, or array.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-1-0_typescript-panel role=tab><label for=tab-group-1-0_typescript class=code-tab-label data-lang=typescript id=tab-group-1-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-1-0_typescript-panel aria-labelledby=tab-group-1-0_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=p>{</span> <span class=nx>Schema</span><span class=p>,</span> <span class=nx>type</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;@colyseus/schema&quot;</span><span class=p>;</span>
+
+<span class=kr>class</span> <span class=nx>World</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+    <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;number&quot;</span><span class=p>)</span>
+    <span class=nx>width</span>: <span class=kt>number</span><span class=p>;</span>
+
+    <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;number&quot;</span><span class=p>)</span>
+    <span class=nx>height</span>: <span class=kt>number</span><span class=p>;</span>
+
+    <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;number&quot;</span><span class=p>)</span>
+    <span class=nx>items</span>: <span class=kt>number</span> <span class=o>=</span> <span class=mi>10</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=kr>class</span> <span class=nx>MyState</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+    <span class=kd>@type</span><span class=p>(</span><span class=nx>World</span><span class=p>)</span>
+    <span class=nx>world</span>: <span class=kt>World</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>World</span><span class=p>();</span>
+<span class=p>}</span>
+</code></pre></div></div><input name=tab-group-1 type=radio id=tab-group-1-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-1-1_typescript-panel role=tab><label for=tab-group-1-1_typescript class=code-tab-label data-lang=typescript id=tab-group-1-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-1-1_typescript-panel aria-labelledby=tab-group-1-1_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>const</span> <span class=nx>schema</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;@colyseus/schema&#39;</span><span class=p>);</span>
+<span class=kr>const</span> <span class=nx>Schema</span> <span class=o>=</span> <span class=nx>schema</span><span class=p>.</span><span class=nx>Schema</span><span class=p>;</span>
+
+<span class=kr>class</span> <span class=nx>World</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+<span class=p>}</span>
+<span class=nx>schema</span><span class=p>.</span><span class=nx>defineTypes</span><span class=p>(</span><span class=nx>World</span><span class=p>,</span> <span class=p>{</span>
+  <span class=nx>width</span><span class=o>:</span> <span class=s2>&quot;number&quot;</span><span class=p>,</span>
+  <span class=nx>height</span><span class=o>:</span> <span class=s2>&quot;number&quot;</span><span class=p>,</span>
+  <span class=nx>items</span><span class=o>:</span> <span class=s2>&quot;number&quot;</span>
+<span class=p>});</span>
+
+<span class=kr>class</span> <span class=nx>MyState</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+    <span class=kr>constructor</span> <span class=p>()</span> <span class=p>{</span>
+        <span class=kr>super</span><span class=p>();</span>
+
+        <span class=k>this</span><span class=p>.</span><span class=nx>world</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>World</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=nx>schema</span><span class=p>.</span><span class=nx>defineTypes</span><span class=p>(</span><span class=nx>MyState</span><span class=p>,</span> <span class=p>{</span>
+  <span class=nx>world</span>: <span class=kt>World</span>
+<span class=p>});</span>
+</code></pre></div></div></div>
+
+<h3 id="array-of-custom-data-type">Array of custom data type<a class="headerlink" href="#array-of-custom-data-type" title="Permanent link">&para;</a></h3>
+<p>When using arrays within <code>State</code> related schema it's important to use the <code>ArraySchema</code> type.
+Do not use plain arrays inside your <code>State</code> classes (those which extend <code>Schema</code>).
+Using plain arrays inside your methods is ok for game logic or otherwise; but not for syncronised state members.</p>
+<p><code>ArraySchema</code> is recommended for describing the world map, or any collection in your game. They have all the methods available in an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"><code>Array</code></a>, but it's synchronizable.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-2-0_typescript-panel role=tab><label for=tab-group-2-0_typescript class=code-tab-label data-lang=typescript id=tab-group-2-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-2-0_typescript-panel aria-labelledby=tab-group-2-0_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=p>{</span> <span class=nx>Schema</span><span class=p>,</span> <span class=nx>ArraySchema</span><span class=p>,</span> <span class=nx>type</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;@colyseus/schema&quot;</span><span class=p>;</span>
+
+<span class=kr>class</span> <span class=nx>Block</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+    <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;number&quot;</span><span class=p>)</span>
+    <span class=nx>x</span>: <span class=kt>number</span><span class=p>;</span>
+
+    <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;number&quot;</span><span class=p>)</span>
+    <span class=nx>y</span>: <span class=kt>number</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=kr>class</span> <span class=nx>MyState</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+    <span class=kd>@type</span><span class=p>([</span> <span class=nx>Block</span> <span class=p>])</span>
+    <span class=nx>blocks</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>ArraySchema</span><span class=o>&lt;</span><span class=nx>Block</span><span class=o>&gt;</span><span class=p>();</span>
+<span class=p>}</span>
+</code></pre></div></div><input name=tab-group-2 type=radio id=tab-group-2-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-2-1_typescript-panel role=tab><label for=tab-group-2-1_typescript class=code-tab-label data-lang=typescript id=tab-group-2-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-2-1_typescript-panel aria-labelledby=tab-group-2-1_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>const</span> <span class=nx>schema</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;@colyseus/schema&#39;</span><span class=p>);</span>
+<span class=kr>const</span> <span class=nx>Schema</span> <span class=o>=</span> <span class=nx>schema</span><span class=p>.</span><span class=nx>Schema</span><span class=p>;</span>
+<span class=kr>const</span> <span class=nx>ArraySchema</span> <span class=o>=</span> <span class=nx>schema</span><span class=p>.</span><span class=nx>ArraySchema</span><span class=p>;</span>
+
+<span class=kr>class</span> <span class=nx>Block</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+<span class=p>}</span>
+<span class=nx>schema</span><span class=p>.</span><span class=nx>defineTypes</span><span class=p>(</span><span class=nx>Block</span><span class=p>,</span> <span class=p>{</span>
+  <span class=nx>x</span><span class=o>:</span> <span class=s2>&quot;number&quot;</span><span class=p>,</span>
+  <span class=nx>y</span><span class=o>:</span> <span class=s2>&quot;number&quot;</span>
+<span class=p>});</span>
+
+<span class=kr>class</span> <span class=nx>MyState</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+    <span class=kr>constructor</span> <span class=p>()</span> <span class=p>{</span>
+        <span class=kr>super</span><span class=p>();</span>
+
+        <span class=k>this</span><span class=p>.</span><span class=nx>blocks</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>ArraySchema</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=nx>schema</span><span class=p>.</span><span class=nx>defineTypes</span><span class=p>(</span><span class=nx>MyState</span><span class=p>,</span> <span class=p>{</span>
+  <span class=nx>blocks</span><span class=o>:</span> <span class=p>[</span> <span class=nx>Block</span> <span class=p>],</span>
+<span class=p>});</span>
+</code></pre></div></div></div>
+
+<h3 id="map-of-custom-data-type">Map of custom data type<a class="headerlink" href="#map-of-custom-data-type" title="Permanent link">&para;</a></h3>
+<p>When using a map, it's important to use the <code>MapSchema</code> type. Do not use a plain object or the native Map type.</p>
+<p><code>MapSchema</code> is recommended to track your game entities by id, such as players, enemies, etc.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-3><input name=tab-group-3 type=radio id=tab-group-3-0_typescript checked=checked class=code-tab data-lang=typescript aria-controls=tab-group-3-0_typescript-panel role=tab><label for=tab-group-3-0_typescript class=code-tab-label data-lang=typescript id=tab-group-3-0_typescript-label>TypeScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-3-0_typescript-panel aria-labelledby=tab-group-3-0_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=p>{</span> <span class=nx>Schema</span><span class=p>,</span> <span class=nx>MapSchema</span><span class=p>,</span> <span class=nx>type</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;@colyseus/schema&quot;</span><span class=p>;</span>
+
+<span class=kr>class</span> <span class=nx>Player</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+    <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;number&quot;</span><span class=p>)</span>
+    <span class=nx>x</span>: <span class=kt>number</span><span class=p>;</span>
+
+    <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;number&quot;</span><span class=p>)</span>
+    <span class=nx>y</span>: <span class=kt>number</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=kr>class</span> <span class=nx>MyState</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+    <span class=kd>@type</span><span class=p>({</span> <span class=nx>map</span>: <span class=kt>Player</span> <span class=p>})</span>
+    <span class=nx>players</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>MapSchema</span><span class=o>&lt;</span><span class=nx>Player</span><span class=o>&gt;</span><span class=p>();</span>
+<span class=p>}</span>
+</code></pre></div></div><input name=tab-group-3 type=radio id=tab-group-3-1_typescript class=code-tab data-lang=typescript aria-controls=tab-group-3-1_typescript-panel role=tab><label for=tab-group-3-1_typescript class=code-tab-label data-lang=typescript id=tab-group-3-1_typescript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=typescript id=tab-group-3-1_typescript-panel aria-labelledby=tab-group-3-1_typescript-label><div class=codehilite><pre><span></span><code><span class=kr>const</span> <span class=nx>schema</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;@colyseus/schema&#39;</span><span class=p>);</span>
+<span class=kr>const</span> <span class=nx>Schema</span> <span class=o>=</span> <span class=nx>schema</span><span class=p>.</span><span class=nx>Schema</span><span class=p>;</span>
+<span class=kr>const</span> <span class=nx>MapSchema</span> <span class=o>=</span> <span class=nx>schema</span><span class=p>.</span><span class=nx>MapSchema</span><span class=p>;</span>
+
+<span class=kr>class</span> <span class=nx>Player</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+<span class=p>}</span>
+<span class=nx>schema</span><span class=p>.</span><span class=nx>defineTypes</span><span class=p>(</span><span class=nx>Player</span><span class=p>,</span> <span class=p>{</span>
+  <span class=nx>x</span><span class=o>:</span> <span class=s2>&quot;number&quot;</span><span class=p>,</span>
+  <span class=nx>y</span><span class=o>:</span> <span class=s2>&quot;number&quot;</span>
+<span class=p>});</span>
+
+<span class=kr>class</span> <span class=nx>MyState</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+    <span class=kr>constructor</span> <span class=p>()</span> <span class=p>{</span>
+        <span class=kr>super</span><span class=p>();</span>
+
+        <span class=k>this</span><span class=p>.</span><span class=nx>players</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>MapSchema</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+<span class=nx>schema</span><span class=p>.</span><span class=nx>defineTypes</span><span class=p>(</span><span class=nx>MyState</span><span class=p>,</span> <span class=p>{</span>
+  <span class=nx>players</span><span class=o>:</span> <span class=p>{</span> <span class=nx>map</span>: <span class=kt>Player</span> <span class=p>}</span>
+<span class=p>});</span>
+</code></pre></div></div></div>
+
+<h4 id="looping-through-the-items-of-a-mapschema">Looping through the items of a <code>MapSchema</code><a class="headerlink" href="#looping-through-the-items-of-a-mapschema" title="Permanent link">&para;</a></h4>
+<p> <div class=codehilite><pre><span></span><code><span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>id</span> <span class=k>in</span> <span class=k>this</span><span class=p>.</span><span class=nx>players</span><span class=p>)</span> <span class=p>{</span>
+  <span class=kr>const</span> <span class=nx>player</span>: <span class=kt>Player</span> <span class=o>=</span> <span class=k>this</span><span class=p>.</span><span class=nx>players</span><span class=p>[</span><span class=nx>id</span><span class=p>];</span>
+  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>id</span><span class=p>,</span> <span class=nx>player</span><span class=p>);</span>
+<span class=p>}</span>
+</code></pre></div></p>
+<h3 id="experimental-filtering-out-fields-for-specific-clients">Experimental: Filtering out fields for specific clients<a class="headerlink" href="#experimental-filtering-out-fields-for-specific-clients" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">This feature is experimental</p>
+<p>The <code>@filter()</code> currently only works for a limited use cases, and it's not recommended for fast-paced games as it will consume too much CPU. It's only possible to filter out schema fields, it <strong>does not work</strong> for items inside arrays and maps.</p>
+</div>
+<p>Field filtering is useful when you want to hide portions of your state for a particular client, to avoid cheating in case a player decides to inspect data coming from the network and seeing the unfiltered state information.</p>
+<p><strong>Example:</strong> In a card game, the relevant data of each card should be available only for the owner of the card, or on certain conditions (e.g. card has been discarded)</p>
+<p>See <code>@filter()</code> callback signature:</p>
+<p> <div class=codehilite><pre><span></span><code><span class=kr>import</span> <span class=p>{</span> <span class=nx>Client</span> <span class=p>}</span> <span class=nx>from</span> <span class=s2>&quot;colyseus&quot;</span><span class=p>;</span>
+
+<span class=cm>/**</span>
+<span class=cm> * DO NOT USE ARROW FUNCTION INSIDE `@filter`, AS IT WILL FORCE A DIFFERENT `this` SCOPE</span>
+<span class=cm> */</span>
+
+<span class=kr>class</span> <span class=nx>Card</span> <span class=kr>extends</span> <span class=nx>Schema</span> <span class=p>{</span>
+  <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;string&quot;</span><span class=p>)</span> <span class=nx>owner</span>: <span class=kt>string</span><span class=p>;</span> <span class=c1>// contains the sessionId of Card owner</span>
+  <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;boolean&quot;</span><span class=p>)</span> <span class=nx>discarded</span>: <span class=kt>boolean</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+
+  <span class=kd>@filter</span><span class=p>(</span><span class=kd>function</span><span class=p>(</span>
+    <span class=k>this</span><span class=o>:</span> <span class=nx>Card</span><span class=p>,</span> <span class=c1>// the instance of the class `@filter` has been defined (instance of `Card`)</span>
+    <span class=nx>client</span>: <span class=kt>Client</span><span class=p>,</span> <span class=c1>// the Room&#39;s `client` instance which this data is going to be filtered to</span>
+    <span class=nx>value?</span>: <span class=kt>Card</span><span class=p>[</span><span class=s1>&#39;number&#39;</span><span class=p>],</span> <span class=c1>// the value of the field to be filtered. (value of `number` field)</span>
+    <span class=nx>root?</span>: <span class=kt>Schema</span> <span class=c1>// the root state Schema instance</span>
+  <span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=k>this</span><span class=p>.</span><span class=nx>discarded</span> <span class=o>||</span> <span class=k>this</span><span class=p>.</span><span class=nx>owner</span> <span class=o>===</span> <span class=nx>client</span><span class=p>.</span><span class=nx>sessionId</span><span class=p>;</span>
+  <span class=p>});</span>
+  <span class=kd>@type</span><span class=p>(</span><span class=s2>&quot;uint8&quot;</span><span class=p>)</span> <span class=kt>number</span><span class=o>:</span> <span class=kt>number</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div></p>
+<h3 id="primitive-types">Primitive types<a class="headerlink" href="#primitive-types" title="Permanent link">&para;</a></h3>
+<p>These are the types you can provide for the <code>@type()</code> decorator, and their limitations.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you know exactly the range of your <code>number</code> properties, you can optimize the serialization by providing the right primitive type for it.</p>
+<p>Otherwise, use <code>"number"</code>, which will adds an extra byte to identify itself during serialization.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"string"</code></td>
+<td>utf8 strings</td>
+<td>maximum byte size of <code>4294967295</code></td>
+</tr>
+<tr>
+<td><code>"number"</code></td>
+<td>auto-detects the <code>int</code> or <code>float</code> type to be used. (adds an extra byte on output)</td>
+<td><code>0</code> to <code>18446744073709551615</code></td>
+</tr>
+<tr>
+<td><code>"boolean"</code></td>
+<td><code>true</code> or <code>false</code></td>
+<td><code>0</code> or <code>1</code></td>
+</tr>
+<tr>
+<td><code>"int8"</code></td>
+<td>signed 8-bit integer</td>
+<td><code>-128</code> to <code>127</code></td>
+</tr>
+<tr>
+<td><code>"uint8"</code></td>
+<td>unsigned 8-bit integer</td>
+<td><code>0</code> to <code>255</code></td>
+</tr>
+<tr>
+<td><code>"int16"</code></td>
+<td>signed 16-bit integer</td>
+<td><code>-32768</code> to <code>32767</code></td>
+</tr>
+<tr>
+<td><code>"uint16"</code></td>
+<td>unsigned 16-bit integer</td>
+<td><code>0</code> to <code>65535</code></td>
+</tr>
+<tr>
+<td><code>"int32"</code></td>
+<td>signed 32-bit integer</td>
+<td><code>-2147483648</code> to <code>2147483647</code></td>
+</tr>
+<tr>
+<td><code>"uint32"</code></td>
+<td>unsigned 32-bit integer</td>
+<td><code>0</code> to <code>4294967295</code></td>
+</tr>
+<tr>
+<td><code>"int64"</code></td>
+<td>signed 64-bit integer</td>
+<td><code>-9223372036854775808</code> to <code>9223372036854775807</code></td>
+</tr>
+<tr>
+<td><code>"uint64"</code></td>
+<td>unsigned 64-bit integer</td>
+<td><code>0</code> to <code>18446744073709551615</code></td>
+</tr>
+<tr>
+<td><code>"float32"</code></td>
+<td>single-precision floating-point number</td>
+<td><code>-3.40282347e+38</code> to <code>3.40282347e+38</code></td>
+</tr>
+<tr>
+<td><code>"float64"</code></td>
+<td>double-precision floating-point number</td>
+<td><code>-1.7976931348623157e+308</code> to <code>1.7976931348623157e+308</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="backwardsforwards-compability">Backwards/forwards compability<a class="headerlink" href="#backwardsforwards-compability" title="Permanent link">&para;</a></h3>
+<p>Backwards/fowards compatibility is possible by declaring new fields at the end of existing structures, and earlier declarations to not be removed, but be marked <code>@deprecated()</code> when needed.</p>
+<p>This is particularly useful for native-compiled targets, such as C#, C++, Haxe, etc - where the client-side can potentially not have the most up-to-date version of the schema definitions.</p>
+<h3 id="limitations-and-best-practices">Limitations and best practices<a class="headerlink" href="#limitations-and-best-practices" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>NaN</code> or <code>null</code> numbers are encoded as <code>0</code></li>
+<li><code>null</code> strings are encoded as <code>""</code></li>
+<li><code>Infinity</code> numbers are encoded as <code>Number.MAX_SAFE_INTEGER</code></li>
+<li>Multi-dimensional arrays are not supported. <a href="https://softwareengineering.stackexchange.com/questions/212808/treating-a-1d-data-structure-as-2d-grid/212813#212813">See how to use 1D arrays as multi-dimensional</a></li>
+<li>Items inside Arrays and Maps must be all instance of the same type.</li>
+<li><code>@colyseus/schema</code> encodes only field values in the specified order.</li>
+<li>Both encoder (server) and decoder (client) must have same schema definition.</li>
+<li>The order of the fields must be the same.</li>
+<li>Avoid manipulating indexes of an array. This result in at least <code>2</code> extra bytes for each index change. <strong>Example:</strong> If you have an array of 20 items, and remove the first item (through <code>shift()</code>) this means <code>38</code> extra bytes to be serialized.</li>
+<li>Avoid moving keys of maps. As of arrays, it adds <code>2</code> extra bytes per key move.</li>
+</ul>
+<h2 id="client-side">Client-side<a class="headerlink" href="#client-side" title="Permanent link">&para;</a></h2>
+<h3 id="callbacks">Callbacks<a class="headerlink" href="#callbacks" title="Permanent link">&para;</a></h3>
+<p>You can use the following callbacks within the schema structures in the client-side to handle changes coming from the server-side.</p>
+<ul>
+<li><a href="#onchange-changes-datachange">onChange (changes)</a></li>
+<li><a href="#onadd-instance-key">onAdd (instance, key)</a></li>
+<li><a href="#onremove-instance-key">onRemove (instance, key)</a></li>
+<li><a href="#onchange-instance-key">onChange (instance, key)</a></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">C#, C++, Haxe</p>
+<p>When using statically typed languages, you need to generate the client-side schema files based on your TypeScript schema definitions. <a href="#client-side-schema-generation">See generating schema on the client-side</a>.</p>
+</div>
+<h4 id="onchange-changes-datachange"><code>onChange (changes: DataChange[])</code><a class="headerlink" href="#onchange-changes-datachange" title="Permanent link">&para;</a></h4>
+<p>You can register the <code>onChange</code> to track a single object's property changes. The <code>onChange</code> callback is called with an array of changed properties, along with their previous value.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-6><input name=tab-group-6 type=radio id=tab-group-6-0_javascript checked=checked class=code-tab data-lang=javascript aria-controls=tab-group-6-0_javascript-panel role=tab><label for=tab-group-6-0_javascript class=code-tab-label data-lang=javascript id=tab-group-6-0_javascript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=javascript id=tab-group-6-0_javascript-panel aria-labelledby=tab-group-6-0_javascript-label><div class=codehilite><pre><span></span><code><span class=nx>room</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>onChange</span> <span class=o>=</span> <span class=p>(</span><span class=nx>changes</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+    <span class=nx>changes</span><span class=p>.</span><span class=nx>forEach</span><span class=p>(</span><span class=nx>change</span> <span class=p>=&gt;</span> <span class=p>{</span>
+        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>field</span><span class=p>);</span>
+        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>previousValue</span><span class=p>);</span>
+    <span class=p>});</span>
+<span class=p>};</span>
+</code></pre></div></div><input name=tab-group-6 type=radio id=tab-group-6-1_lua class=code-tab data-lang=lua aria-controls=tab-group-6-1_lua-panel role=tab><label for=tab-group-6-1_lua class=code-tab-label data-lang=lua id=tab-group-6-1_lua-label>LUA</label><div class=code-tabpanel role=tabpanel data-lang=lua id=tab-group-6-1_lua-panel aria-labelledby=tab-group-6-1_lua-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>state</span><span class=p>[</span><span class=s1>&#39;on_change&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=kr>function</span> <span class=p>(</span><span class=n>changes</span><span class=p>)</span>
+    <span class=kr>for</span> <span class=n>i</span><span class=p>,</span> <span class=n>change</span> <span class=kr>in</span> <span class=nb>ipairs</span><span class=p>(</span><span class=n>changes</span><span class=p>)</span> <span class=kr>do</span>
+        <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>field</span><span class=p>)</span>
+        <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>value</span><span class=p>)</span>
+        <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>previousValue</span><span class=p>)</span>
+    <span class=kr>end</span>
+<span class=kr>end</span>
+</code></pre></div></div><input name=tab-group-6 type=radio id=tab-group-6-2_csharp class=code-tab data-lang=csharp aria-controls=tab-group-6-2_csharp-panel role=tab><label for=tab-group-6-2_csharp class=code-tab-label data-lang=csharp id=tab-group-6-2_csharp-label>C#</label><div class=code-tabpanel role=tabpanel data-lang=csharp id=tab-group-6-2_csharp-panel aria-labelledby=tab-group-6-2_csharp-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>OnChange</span> <span class=p>+=</span> <span class=p>(</span><span class=n>changes</span><span class=p>)</span> <span class=p>=&gt;</span>
+<span class=p>{</span>
+    <span class=n>changes</span><span class=p>.</span><span class=n>ForEach</span><span class=p>((</span><span class=n>obj</span><span class=p>)</span> <span class=p>=&gt;</span>
+    <span class=p>{</span>
+        <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span><span class=p>(</span><span class=n>obj</span><span class=p>.</span><span class=n>Field</span><span class=p>);</span>
+        <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span><span class=p>(</span><span class=n>obj</span><span class=p>.</span><span class=n>Value</span><span class=p>);</span>
+        <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span><span class=p>(</span><span class=n>obj</span><span class=p>.</span><span class=n>PreviousValue</span><span class=p>);</span>
+    <span class=p>});</span>
+<span class=p>};</span>
+</code></pre></div></div></div>
+
+<ul>
+<li>You cannot register a <code>onChange</code> callback for objects that haven't been synchronized to the client-side yet.</li>
+<li><a href="#onchange-instance-key">The <code>onChange</code> works differently if used directly in an <code>ArraySchema</code> or <code>MapSchema</code></a></li>
+</ul>
+<h4 id="onadd-instance-key"><code>onAdd (instance, key)</code><a class="headerlink" href="#onadd-instance-key" title="Permanent link">&para;</a></h4>
+<p>The <code>onAdd</code> callback can only be used in maps (<code>MapSchema</code>) and arrays (<code>ArraySchema</code>). The <code>onAdd</code> callback is called with the added instance and its key on holder object as argument.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-7><input name=tab-group-7 type=radio id=tab-group-7-0_javascript checked=checked class=code-tab data-lang=javascript aria-controls=tab-group-7-0_javascript-panel role=tab><label for=tab-group-7-0_javascript class=code-tab-label data-lang=javascript id=tab-group-7-0_javascript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=javascript id=tab-group-7-0_javascript-panel aria-labelledby=tab-group-7-0_javascript-label><div class=codehilite><pre><span></span><code><span class=nx>room</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>.</span><span class=nx>onAdd</span> <span class=o>=</span> <span class=p>(</span><span class=nx>player</span><span class=p>,</span> <span class=nx>key</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>player</span><span class=p>,</span> <span class=s2>&quot;has been added at&quot;</span><span class=p>,</span> <span class=nx>key</span><span class=p>);</span>
+
+    <span class=c1>// add your player entity to the game world!</span>
+
+    <span class=c1>// If you want to track changes on a child object inside a map, this is a common pattern:</span>
+    <span class=nx>player</span><span class=p>.</span><span class=nx>onChange</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>changes</span><span class=p>)</span> <span class=p>{</span>
+        <span class=nx>changes</span><span class=p>.</span><span class=nx>forEach</span><span class=p>(</span><span class=nx>change</span> <span class=p>=&gt;</span> <span class=p>{</span>
+            <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>field</span><span class=p>);</span>
+            <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+            <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>change</span><span class=p>.</span><span class=nx>previousValue</span><span class=p>);</span>
+        <span class=p>})</span>
+    <span class=p>};</span>
+
+    <span class=c1>// force &quot;onChange&quot; to be called immediatelly</span>
+    <span class=nx>player</span><span class=p>.</span><span class=nx>triggerAll</span><span class=p>();</span>
+<span class=p>};</span>
+</code></pre></div></div><input name=tab-group-7 type=radio id=tab-group-7-1_lua class=code-tab data-lang=lua aria-controls=tab-group-7-1_lua-panel role=tab><label for=tab-group-7-1_lua class=code-tab-label data-lang=lua id=tab-group-7-1_lua-label>LUA</label><div class=code-tabpanel role=tabpanel data-lang=lua id=tab-group-7-1_lua-panel aria-labelledby=tab-group-7-1_lua-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>state</span><span class=p>.</span><span class=n>players</span><span class=p>[</span><span class=s1>&#39;on_add&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=kr>function</span> <span class=p>(</span><span class=n>player</span><span class=p>,</span> <span class=n>key</span><span class=p>)</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s2>&quot;player has been added at&quot;</span><span class=p>,</span> <span class=n>key</span><span class=p>);</span>
+
+    <span class=c1>-- add your player entity to the game world!</span>
+
+    <span class=c1>-- If you want to track changes on a child object inside a map, this is a common pattern:</span>
+    <span class=n>player</span><span class=p>[</span><span class=s1>&#39;on_change&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=kr>function</span><span class=p>(</span><span class=n>changes</span><span class=p>)</span>
+        <span class=kr>for</span> <span class=n>i</span><span class=p>,</span> <span class=n>change</span> <span class=kr>in</span> <span class=nb>ipairs</span><span class=p>(</span><span class=n>changes</span><span class=p>)</span> <span class=kr>do</span>
+            <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>field</span><span class=p>)</span>
+            <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>value</span><span class=p>)</span>
+            <span class=nb>print</span><span class=p>(</span><span class=n>change</span><span class=p>.</span><span class=n>previousValue</span><span class=p>)</span>
+        <span class=kr>end</span>
+    <span class=kr>end</span>
+
+    <span class=c1>-- force &quot;on_change&quot; to be called immediatelly</span>
+    <span class=n>player</span><span class=p>.</span><span class=n>trigger_all</span><span class=p>()</span>
+<span class=kr>end</span>
+</code></pre></div></div><input name=tab-group-7 type=radio id=tab-group-7-2_csharp class=code-tab data-lang=csharp aria-controls=tab-group-7-2_csharp-panel role=tab><label for=tab-group-7-2_csharp class=code-tab-label data-lang=csharp id=tab-group-7-2_csharp-label>C#</label><div class=code-tabpanel role=tabpanel data-lang=csharp id=tab-group-7-2_csharp-panel aria-labelledby=tab-group-7-2_csharp-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>players</span><span class=p>.</span><span class=n>OnAdd</span> <span class=p>+=</span> <span class=p>(</span><span class=n>Player</span> <span class=n>player</span><span class=p>,</span> <span class=kt>string</span> <span class=n>key</span><span class=p>)</span> <span class=p>=&gt;</span>
+<span class=p>{</span>
+    <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span><span class=p>(</span><span class=s>&quot;player has been added at &quot;</span> <span class=p>+</span> <span class=n>key</span><span class=p>);</span>
+
+    <span class=c1>// add your player entity to the game world!</span>
+
+    <span class=c1>// If you want to track changes on a child object inside a map, this is a common pattern:</span>
+    <span class=n>player</span><span class=p>.</span><span class=n>OnChange</span> <span class=p>+=</span> <span class=p>(</span><span class=n>changes</span><span class=p>)</span> <span class=p>=&gt;</span>
+    <span class=p>{</span>
+        <span class=n>changes</span><span class=p>.</span><span class=n>ForEach</span><span class=p>((</span><span class=n>obj</span><span class=p>)</span> <span class=p>=&gt;</span>
+        <span class=p>{</span>
+            <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span><span class=p>(</span><span class=n>obj</span><span class=p>.</span><span class=n>Field</span><span class=p>);</span>
+            <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span><span class=p>(</span><span class=n>obj</span><span class=p>.</span><span class=n>Value</span><span class=p>);</span>
+            <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span><span class=p>(</span><span class=n>obj</span><span class=p>.</span><span class=n>PreviousValue</span><span class=p>);</span>
+        <span class=p>});</span>
+    <span class=p>};</span>
+
+    <span class=c1>// force &quot;OnChange&quot; to be called immediatelly</span>
+    <span class=n>e</span><span class=p>.</span><span class=n>Value</span><span class=p>.</span><span class=n>TriggerAll</span><span class=p>();</span>
+<span class=p>};</span>
+</code></pre></div></div></div>
+
+<h4 id="onremove-instance-key"><code>onRemove (instance, key)</code><a class="headerlink" href="#onremove-instance-key" title="Permanent link">&para;</a></h4>
+<p>The <code>onRemove</code> callback can only be used in maps (<code>MapSchema</code>) and arrays (<code>ArraySchema</code>). The <code>onRemove</code> callback is called with the removed instance and its key on holder object as argument.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-8><input name=tab-group-8 type=radio id=tab-group-8-0_javascript checked=checked class=code-tab data-lang=javascript aria-controls=tab-group-8-0_javascript-panel role=tab><label for=tab-group-8-0_javascript class=code-tab-label data-lang=javascript id=tab-group-8-0_javascript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=javascript id=tab-group-8-0_javascript-panel aria-labelledby=tab-group-8-0_javascript-label><div class=codehilite><pre><span></span><code><span class=nx>room</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>.</span><span class=nx>onRemove</span> <span class=o>=</span> <span class=p>(</span><span class=nx>player</span><span class=p>,</span> <span class=nx>key</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>player</span><span class=p>,</span> <span class=s2>&quot;has been removed at&quot;</span><span class=p>,</span> <span class=nx>key</span><span class=p>);</span>
+
+    <span class=c1>// remove your player entity from the game world!</span>
+<span class=p>};</span>
+</code></pre></div></div><input name=tab-group-8 type=radio id=tab-group-8-1_lua class=code-tab data-lang=lua aria-controls=tab-group-8-1_lua-panel role=tab><label for=tab-group-8-1_lua class=code-tab-label data-lang=lua id=tab-group-8-1_lua-label>LUA</label><div class=code-tabpanel role=tabpanel data-lang=lua id=tab-group-8-1_lua-panel aria-labelledby=tab-group-8-1_lua-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>state</span><span class=p>.</span><span class=n>players</span><span class=p>[</span><span class=s1>&#39;on_remove&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=kr>function</span> <span class=p>(</span><span class=n>player</span><span class=p>,</span> <span class=n>key</span><span class=p>)</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s2>&quot;player has been removed at &quot;</span> <span class=o>..</span> <span class=n>key</span><span class=p>);</span>
+
+    <span class=c1>-- remove your player entity from the game world!</span>
+<span class=kr>end</span>
+</code></pre></div></div><input name=tab-group-8 type=radio id=tab-group-8-2_csharp class=code-tab data-lang=csharp aria-controls=tab-group-8-2_csharp-panel role=tab><label for=tab-group-8-2_csharp class=code-tab-label data-lang=csharp id=tab-group-8-2_csharp-label>C#</label><div class=code-tabpanel role=tabpanel data-lang=csharp id=tab-group-8-2_csharp-panel aria-labelledby=tab-group-8-2_csharp-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>players</span><span class=p>.</span><span class=n>OnRemove</span> <span class=p>+=</span> <span class=p>(</span><span class=n>Player</span> <span class=n>player</span><span class=p>,</span> <span class=kt>string</span> <span class=n>key</span><span class=p>)</span> <span class=p>=&gt;</span>
+<span class=p>{</span>
+    <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span><span class=p>(</span><span class=s>&quot;player has been removed at &quot;</span> <span class=p>+</span> <span class=n>key</span><span class=p>);</span>
+
+    <span class=c1>// remove your player entity from the game world!</span>
+<span class=p>};</span>
+</code></pre></div></div></div>
+
+<h4 id="onchange-instance-key"><code>onChange (instance, key)</code><a class="headerlink" href="#onchange-instance-key" title="Permanent link">&para;</a></h4>
+<p>When registering a <code>onChange</code> callback on a <code>MapSchema</code> or <code>ArraySchema</code> instance, you can detect whenever a object has been changed inside that container.</p>
+<div class=md-fenced-code-tabs id=tab-tab-group-9><input name=tab-group-9 type=radio id=tab-group-9-0_javascript checked=checked class=code-tab data-lang=javascript aria-controls=tab-group-9-0_javascript-panel role=tab><label for=tab-group-9-0_javascript class=code-tab-label data-lang=javascript id=tab-group-9-0_javascript-label>JavaScript</label><div class=code-tabpanel role=tabpanel data-lang=javascript id=tab-group-9-0_javascript-panel aria-labelledby=tab-group-9-0_javascript-label><div class=codehilite><pre><span></span><code><span class=nx>room</span><span class=p>.</span><span class=nx>state</span><span class=p>.</span><span class=nx>players</span><span class=p>.</span><span class=nx>onChange</span> <span class=o>=</span> <span class=p>(</span><span class=nx>player</span><span class=p>,</span> <span class=nx>key</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>player</span><span class=p>,</span> <span class=s2>&quot;have changes at&quot;</span><span class=p>,</span> <span class=nx>key</span><span class=p>);</span>
+<span class=p>};</span>
+</code></pre></div></div><input name=tab-group-9 type=radio id=tab-group-9-1_lua class=code-tab data-lang=lua aria-controls=tab-group-9-1_lua-panel role=tab><label for=tab-group-9-1_lua class=code-tab-label data-lang=lua id=tab-group-9-1_lua-label>LUA</label><div class=code-tabpanel role=tabpanel data-lang=lua id=tab-group-9-1_lua-panel aria-labelledby=tab-group-9-1_lua-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>state</span><span class=p>.</span><span class=n>players</span><span class=p>[</span><span class=s1>&#39;on_change&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=kr>function</span> <span class=p>(</span><span class=n>player</span><span class=p>,</span> <span class=n>key</span><span class=p>)</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s2>&quot;player have changes at &quot;</span> <span class=o>..</span> <span class=n>key</span><span class=p>);</span>
+<span class=kr>end</span>
+</code></pre></div></div><input name=tab-group-9 type=radio id=tab-group-9-2_csharp class=code-tab data-lang=csharp aria-controls=tab-group-9-2_csharp-panel role=tab><label for=tab-group-9-2_csharp class=code-tab-label data-lang=csharp id=tab-group-9-2_csharp-label>C#</label><div class=code-tabpanel role=tabpanel data-lang=csharp id=tab-group-9-2_csharp-panel aria-labelledby=tab-group-9-2_csharp-label><div class=codehilite><pre><span></span><code><span class=n>room</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>players</span><span class=p>.</span><span class=n>OnChange</span> <span class=p>+=</span> <span class=p>(</span><span class=n>Player</span> <span class=n>player</span><span class=p>,</span> <span class=kt>string</span> <span class=n>key</span><span class=p>)</span> <span class=p>=&gt;</span>
+<span class=p>{</span>
+    <span class=n>Debug</span><span class=p>.</span><span class=n>Log</span><span class=p>(</span><span class=s>&quot;player have changes at &quot;</span> <span class=p>+</span> <span class=n>key</span><span class=p>);</span>
+<span class=p>};</span>
+</code></pre></div></div></div>
+
+<p>It's not possible to know exactly which properties have changed using this method. See <a href="#onchange-changes-datachange"><code>onChange (changes)</code></a> if you need to access the list of changes</p>
+<div class="admonition warning">
+<p class="admonition-title">Important</p>
+<p>The <code>onChange</code> callback is not triggered during <a href="#onadd-instance-key"><code>onAdd</code></a> or <a href="#onremove-instance-key"><code>onRemove</code></a>.</p>
+<p>Consider registering <code>onAdd</code> and <code>onRemove</code> if you need to detect changes during these steps too.</p>
+</div>
+<h2 id="client-side-schema-generation">Client-side schema generation<a class="headerlink" href="#client-side-schema-generation" title="Permanent link">&para;</a></h2>
+<p>This is only applicable if you're using a statically typed language such as C#, C++, or Haxe.</p>
+<p>From your server project, you can run <code>npx schema-codegen</code> to automatically generate the client-side schema files.</p>
+<p> <div class=codehilite><pre><span></span><code>npx schema-codegen --help
+</code></pre></div></p>
+<p><strong>Output:</strong></p>
+<p> <div class=codehilite><pre><span></span><code>schema-codegen [path/to/Schema.ts]
+
+Usage (C#/Unity)
+    schema-codegen src/Schema.ts --output client-side/ --csharp --namespace MyGame.Schema
+
+Valid options:
+    --output: fhe output directory for generated client-side schema files
+    --csharp: generate for C#/Unity
+    --cpp: generate for C++
+    --haxe: generate for Haxe
+    --ts: generate for TypeScript
+    --js: generate for JavaScript
+    --java: generate for Java
+
+Optional:
+    --namespace: generate namespace on output code
+</code></pre></div></p>
+<h3 id="c-unity3d">C# / Unity3d<a class="headerlink" href="#c-unity3d" title="Permanent link">&para;</a></h3>
+<p>Below is a real example to generate the C# schema files from the <a href="https://github.com/colyseus/colyseus-unity3d/tree/master/Server">demo Unity3d project</a>.</p>
+<p> <div class=codehilite><pre><span></span><code>npx schema-codegen DemoRoom.ts --csharp --output ../Assets/
+generated: Player.cs
+generated: State.cs
+</code></pre></div></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Overview
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../fossil-delta/" title="Fossil Delta (deprecated)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Fossil Delta (deprecated)
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Endel Dreyer
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://www.patreon.com/endel" class="md-footer-social__link fa fa-money"></a>
+    
+      <a href="https://discuss.colyseus.io" class="md-footer-social__link fa fa-comments"></a>
+    
+      <a href="http://colyseus.io" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/colyseus" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/colyseus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/game-std-io/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b41f3d20.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../javascripts/main.js"></script>
+      
+        <script src="../../javascripts/ads.js"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
