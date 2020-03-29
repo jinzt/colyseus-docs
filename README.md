@@ -1,17 +1,25 @@
-# Colyseus Documentation
+# Colyseus文档
 
-Documentation for [Colyseus](https://github.com/colyseus/colyseus/).
+为[Colyseus](https://github.com/colyseus/colyseus/)使用编写的文档。
 
-This project uses Markdown for documentation which is compiled with [mkdocs](http://www.mkdocs.org).
+该项目使用Markdown编写使用[mkdocs](http://www.mkdocs.org)编译的文档。
 
-## Install and setup
+## 安装和设置
 
 ```shell
 pip install -r requirements.txt
 ```
 
-## Development
+## 运行
 
 ```
 mkdocs serve
 ```
+
+## 构建
+```
+mkdocs build
+```
+
+## 文档基于版本
+commit 41b068bbbc1d60c35ce277ee1b5a6b79621513ea

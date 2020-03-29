@@ -1,8 +1,8 @@
-You can deny a player connection by throwing an error during `onAuth()` or `onJoin()` methods.
+您可以通过在`onAuth()`或`onJoin()`方法期间抛出错误来拒绝玩家连接。
 
-The implementation of when to deny a player connection will depend on your use-case.
+何时拒绝玩家连接的实现取决于您的用例。
 
-Below you can see an example validating the [@colyseus/social](/authentication/#server-side-api) authentication token, and retrieving a `Hero` record linked with the user id.
+在下面，您可以看到一个示例，该示例验证[@colyseus/social](/authentication/#server-side-api) 身份验证令牌，并检索 `Hero` 与用户ID链接的记录。
 
 ```typescript
 export class BattleRoom extends Room {
@@ -29,7 +29,7 @@ export class BattleRoom extends Room {
 }
 ```
 
-The client will then receive an error when trying to join the room:
+尝试加入房间时，客户端将收到错误消息：
 
 ```typescript
 client.joinOrCreate("battle", {}).then(room => {

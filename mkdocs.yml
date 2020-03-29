@@ -70,22 +70,18 @@ markdown_extensions:
 
 # Nav menu
 nav:
-- 'Home': 'index.md'
-- 'Getting started':
-  - 'Server-side': 'getting-started/server.md'
-  - 'JavaScript Client': 'getting-started/javascript-client.md'
-  - 'Defold Engine Client': 'getting-started/defold-client.md'
-  - 'Haxe Client': 'getting-started/haxe-client.md'
-  - 'Cocos2d-x Client': 'getting-started/cocos2dx-client.md'
-  - 'Unity3d Client': 'getting-started/unity3d-client.md'
-  - 'Construct3 Client': 'getting-started/construct3-client.md'
+- '主页': 'index.md'
+- '入门':
+  - '服务器段': 'getting-started/server.md'
+  - 'JavaScript 客户端': 'getting-started/javascript-client.md'
+  - 'Unity3d 客户端': 'getting-started/unity3d-client.md'
 
-- "How-to":
-  - 'Password-protect a room': 'how-to/password-protect-room.md'
-  - 'Deny a player to join a room': 'how-to/deny-player-join-a-room.md'
-  - 'Rate-limit': 'how-to/rate-limit.md'
+- "如何使用":
+  - '用密码保护房间': 'how-to/password-protect-room.md'
+  - '拒绝玩家加入房间': 'how-to/deny-player-join-a-room.md'
+  - '限速': 'how-to/rate-limit.md'
 
-- 'Server API':
+- '服务器 API':
   - 'Server': 'server/api.md'
   - 'Room': 'server/room.md'
   - 'Client': 'server/client.md'
@@ -96,11 +92,11 @@ nav:
   - 'Graceful shutdown': 'server/graceful-shutdown.md'
   - 'Custom State Serialization': 'server/state-serialization.md'
 
-- 'Client API':
+- '客户端 API':
   - 'Client': 'client/client.md'
   - 'Room': 'client/room.md'
 
-- 'State Handling':
+- '状态处理':
   - 'Overview': 'state/overview.md'
   - 'Schema': 'state/schema.md'
   - 'Fossil Delta (deprecated)': 'state/fossil-delta.md'

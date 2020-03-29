@@ -1,8 +1,10 @@
-# Web-Socket Server
+# Web-Socket 服务器
 
 ## Server
 
 The [`Server`](#server) is responsible for providing the WebSocket server to enable communication between server and client.
+
+该[`Server`](#server)负责提供WebSocket的服务器，使服务器和客户机之间的通信。
 
 ### `constructor (options)`
 

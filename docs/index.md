@@ -1,41 +1,41 @@
-Colyseus is a Authoritative Multiplayer Game Server for Node.js. It allows you to focus on your gameplay instead of bothering about networking.
+Colyseus是Node.js的权威多人游戏服务器。它使您可以专注于自己的游戏玩法，而不必为网络烦恼。
 
-The mission of this framework is to be the easiest solution for creating your own multiplayer games in JavaScript.
+该框架的任务是成为使用JavaScript创建自己的多人游戏的最简单解决方案。
 
 <center>
   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSjJtmU-SIkng_bFQ5z1000M6nPSoAoQL54j0Y_Cbg7R5tRe9FXLKaBmcKbY_iyEpnMqQGDjx_335QJ/embed?start=false&loop=false&delayms=3000" frameborder="0" width="680" height="411" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </center>
 
-## What Colyseus provides to you:
+## Colyseus为您提供的内容：
 
-- WebSocket-based communication
-- Simple API in the server-side and client-side.
-- Automatic state synchronization between server and client.
-- Matchmaking clients into game sessions
-- Scale vertically or horizontally
+- 基于WebSocket的通信
+- 服务器端和客户端中的简单API
+- 服务器和客户端之间的自动状态同步
+- 对接会客户进入游戏环节
+- 垂直或水平扩展
 
-## What Colyseus won't provide:
+## Colyseus不提供的内容：
 
-- Game Engine: Colyseus is agnostic of the engine you're using. Need Physics? Add your own logic / package.
-- Database: It's up to you to configure and select which database you'd like to use.
+- 游戏引擎：Colyseus与您使用的引擎无关。需要物理学吗？添加您自己的逻辑/包。
+- 数据库：由您决定是否配置和选择要使用的数据库。
 
-## The Mindset
+## 思维
 
-The authoritative game server mindset is quite simple. The Server validates the user actions, and clients are dumb visual representations of the current game state.
+权威的游戏服务器思维方式非常简单。服务器验证用户的动作，而客户端则是当前游戏状态的虚拟表示。
 
-The server should take care of all data involved in your game, such as positioning, speeds, collisions, etc.
+服务器应处理游戏中涉及的所有数据，例如位置，速度，碰撞等。
 
-Making multiplayer games is usually tricky because your gameplay must take the multiple delays into account - the other clients sending data to the server, and the server sending data back to all clients. It's the art of faking something that has already happened is actually happening as the current player sees and plays the game.
+制作多人游戏通常很棘手，因为您的游戏玩法必须考虑多个延迟-其他客户端将数据发送到服务器，而服务器将数据发送回所有客户端。伪造已经发生的事情的艺术实际上是在当前玩家观看和玩游戏时发生的事情。
 
-Here's how the "multiplayer game loop" looks like on Colyseus:
+这是在Colyseus上的“多人游戏循环”的样子：
 
-- Client sends a message to the server, requesting to change its state.
-- The input must be validated by your room handler.
-- The room state is updated.
-- All clients receive the latest version of the game state.
-- The visual representation of the game state is updated.
+- 客户端向服务器发送一条消息，请求更改其状态。
+- 输入必须由您的房间管理员验证。
+- 房间状态已更新。
+- 所有客户端都会收到游戏状态的最新版本。
+- 游戏状态的视觉表示已更新。
 
-### Diagram
+### 简图
 
 ```
               room.send({ action: "left" })
@@ -55,7 +55,7 @@ Here's how the "multiplayer game loop" looks like on Colyseus:
 |----------------------------------------------------+
 ```
 
-## What people are saying about Colyseus?
+## 人们对Colyseus说什么？?
 
 !!! Quote "[@bmovement](https://twitter.com/bmovement)"
     "Thanks again for this framework... it allowed someone like me who just wants the server to be a black box to focus on my game instead of getting bogged down learning a whole new skill set!"
@@ -63,9 +63,9 @@ Here's how the "multiplayer game loop" looks like on Colyseus:
 !!! Quote "[@sagestudios](https://github.com/sagestudios)"
     Loved the framework. Exactly what we are looking for in terms of features.
 
-## External links
+## 外部链接
 
 - [💬 &nbsp; Chat / Discord](https://discord.gg/RY8rRS7)
-- [💬 &nbsp; Forum](http://discuss.colyseus.io/)
-- [💰 &nbsp; Support the project](https://www.patreon.com/endel)
-- [🌐 &nbsp; Website](https://colyseus.io)
+- [💬 &nbsp; 论坛](http://discuss.colyseus.io/)
+- [💰 &nbsp; 支持项目](https://www.patreon.com/endel)
+- [🌐 &nbsp; 网站](https://colyseus.io)

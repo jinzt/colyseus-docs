@@ -1,6 +1,6 @@
-## Step 1: allow the matchmaker to identify the `"password"` field.
+## 步骤1： 允许 matchmaker 识别到 `"password"` 字段.
 
-Define the `"password"` field inside the `filterBy()` method.
+在`filterBy()`方法内部定义字段`"password"`。
 
 ```typescript
 gameServer
@@ -9,9 +9,9 @@ gameServer
 ```
 
 
-## Step 2: make the room unlisted
+## 步骤2：将房间设为不公开
 
-If a password was provided for `create()` or `joinOrCreate()`, set the room listing as private:
+如果为 `create()` 或者 `joinOrCreate()`设置了密码, 请将房间属性设置为私有的:
 
 ```typescript
 export class BattleRoom extends Room {
